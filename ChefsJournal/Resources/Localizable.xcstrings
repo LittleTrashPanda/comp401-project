@@ -1,0 +1,2800 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "%@ scores, oldest first: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@ scores, oldest first: %@"
+          }
+        }
+      }
+    },
+    "%@ · %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@ · %@"
+          }
+        }
+      }
+    },
+    "%@ · %@ · Experience %lld/10": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@ · %@ · Experience %lld/10"
+          }
+        }
+      }
+    },
+    "%@ · Ordered %lld times · %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@ · Ordered %lld times · %@"
+          }
+        }
+      }
+    },
+    "%@ · Would order again": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@ · Would order again"
+          }
+        }
+      }
+    },
+    "%@ — %@ (%@)": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@ — %@ (%@)"
+          }
+        }
+      }
+    },
+    "%@ — taste %lld, value %lld": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@ — taste %lld, value %lld"
+          }
+        }
+      }
+    },
+    "%@, this restaurant: taste %lld, value %lld": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@, this restaurant: taste %lld, value %lld"
+          }
+        }
+      }
+    },
+    "%@: taste %lld, value %lld": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@: taste %lld, value %lld"
+          }
+        }
+      }
+    },
+    "%@’s profile mentions this. Mark as a problem for %@?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%@’s profile mentions this. Mark as a problem for %@?"
+          }
+        }
+      }
+    },
+    "%lld days ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld days ago"
+          }
+        }
+      }
+    },
+    "%lld months ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld months ago"
+          }
+        }
+      }
+    },
+    "%lld out of 10": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld out of 10"
+          }
+        }
+      }
+    },
+    "%lld restaurants · %lld visits · %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld restaurants · %lld visits · %@"
+          }
+        }
+      }
+    },
+    "%lld results": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld results"
+          }
+        }
+      }
+    },
+    "%lld visits": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld visits"
+          }
+        }
+      }
+    },
+    "%lld visits · Last visited %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld visits · Last visited %@"
+          }
+        }
+      }
+    },
+    "%lld weeks ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld weeks ago"
+          }
+        }
+      }
+    },
+    "%lld years ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld years ago"
+          }
+        }
+      }
+    },
+    "%lld+ average": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%lld+ average"
+          }
+        }
+      }
+    },
+    "+ Custom": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "+ Custom"
+          }
+        }
+      }
+    },
+    "1 month ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "1 month ago"
+          }
+        }
+      }
+    },
+    "1 week ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "1 week ago"
+          }
+        }
+      }
+    },
+    "1 year ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "1 year ago"
+          }
+        }
+      }
+    },
+    "Add": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add"
+          }
+        }
+      }
+    },
+    "Add Diner": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add Diner"
+          }
+        }
+      }
+    },
+    "Add Dish": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add Dish"
+          }
+        }
+      }
+    },
+    "Add at least one complete dish to save this visit.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add at least one complete dish to save this visit."
+          }
+        }
+      }
+    },
+    "Add “%@”": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add “%@”"
+          }
+        }
+      }
+    },
+    "All dishes": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "All dishes"
+          }
+        }
+      }
+    },
+    "Any": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Any"
+          }
+        }
+      }
+    },
+    "Any time": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Any time"
+          }
+        }
+      }
+    },
+    "Apply": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Apply"
+          }
+        }
+      }
+    },
+    "Area": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Area"
+          }
+        }
+      }
+    },
+    "Area or address (optional)": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Area or address (optional)"
+          }
+        }
+      }
+    },
+    "Area or address can be added next": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Area or address can be added next"
+          }
+        }
+      }
+    },
+    "At this restaurant": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "At this restaurant"
+          }
+        }
+      }
+    },
+    "Average %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Average %@"
+          }
+        }
+      }
+    },
+    "Avg. experience": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Avg. experience"
+          }
+        }
+      }
+    },
+    "Avg. taste": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Avg. taste"
+          }
+        }
+      }
+    },
+    "Avg. value": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Avg. value"
+          }
+        }
+      }
+    },
+    "Back": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Back"
+          }
+        }
+      }
+    },
+    "Backup & Sync": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Backup & Sync"
+          }
+        }
+      }
+    },
+    "Been a while": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Been a while"
+          }
+        }
+      }
+    },
+    "Best first": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Best first"
+          }
+        }
+      }
+    },
+    "CSV": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "CSV"
+          }
+        }
+      }
+    },
+    "CSV is a spreadsheet with one row per dish. It can’t hold photos; choose PDF to include them.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "CSV is a spreadsheet with one row per dish. It can’t hold photos; choose PDF to include them."
+          }
+        }
+      }
+    },
+    "CSV or PDF": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "CSV or PDF"
+          }
+        }
+      }
+    },
+    "Camera access is off. You can turn it on in Settings › Chef's Journal.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Camera access is off. You can turn it on in Settings › Chef's Journal."
+          }
+        }
+      }
+    },
+    "Camera or Photo Library": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Camera or Photo Library"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "Change photo": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Change photo"
+          }
+        }
+      }
+    },
+    "Chef's Journal %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Chef's Journal %@"
+          }
+        }
+      }
+    },
+    "Chef's Journal keeps your blunt notes to yourself. No account, no profile, no public scores.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Chef's Journal keeps your blunt notes to yourself. No account, no profile, no public scores."
+          }
+        }
+      }
+    },
+    "Choose from Library": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Choose from Library"
+          }
+        }
+      }
+    },
+    "Compare": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Compare"
+          }
+        }
+      }
+    },
+    "Contains dairy": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contains dairy"
+          }
+        }
+      }
+    },
+    "Contains egg": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contains egg"
+          }
+        }
+      }
+    },
+    "Contains gluten": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contains gluten"
+          }
+        }
+      }
+    },
+    "Contains meat": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contains meat"
+          }
+        }
+      }
+    },
+    "Contains nuts": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contains nuts"
+          }
+        }
+      }
+    },
+    "Contains shellfish": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contains shellfish"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Continue"
+          }
+        }
+      }
+    },
+    "Contribute anonymous insights": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contribute anonymous insights"
+          }
+        }
+      }
+    },
+    "Contribution off": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contribution off"
+          }
+        }
+      }
+    },
+    "Contribution on": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Contribution on"
+          }
+        }
+      }
+    },
+    "Couldn’t save": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Couldn’t save"
+          }
+        }
+      }
+    },
+    "Custom tag": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Custom tag"
+          }
+        }
+      }
+    },
+    "Date": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Date"
+          }
+        }
+      }
+    },
+    "Delete": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Delete"
+          }
+        }
+      }
+    },
+    "Delete Dish": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Delete Dish"
+          }
+        }
+      }
+    },
+    "Delete Visit": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Delete Visit"
+          }
+        }
+      }
+    },
+    "Delete this diner?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Delete this diner?"
+          }
+        }
+      }
+    },
+    "Delete this dish entry": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Delete this dish entry"
+          }
+        }
+      }
+    },
+    "Delete this dish entry?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Delete this dish entry?"
+          }
+        }
+      }
+    },
+    "Delete this visit?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Delete this visit?"
+          }
+        }
+      }
+    },
+    "Dietary profile (optional)": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dietary profile (optional)"
+          }
+        }
+      }
+    },
+    "Dietary tag": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dietary tag"
+          }
+        }
+      }
+    },
+    "Dietary tags": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dietary tags"
+          }
+        }
+      }
+    },
+    "Dine-in": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dine-in"
+          }
+        }
+      }
+    },
+    "Diner": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Diner"
+          }
+        }
+      }
+    },
+    "Diners": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Diners"
+          }
+        }
+      }
+    },
+    "Diners and dietary profiles": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Diners and dietary profiles"
+          }
+        }
+      }
+    },
+    "Diners are people you eat with. Tag dishes as a problem for someone to get a Heads-up next time.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Diners are people you eat with. Tag dishes as a problem for someone to get a Heads-up next time."
+          }
+        }
+      }
+    },
+    "Discard": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Discard"
+          }
+        }
+      }
+    },
+    "Discard this draft?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Discard this draft?"
+          }
+        }
+      }
+    },
+    "Dish": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dish"
+          }
+        }
+      }
+    },
+    "Dish name": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dish name"
+          }
+        }
+      }
+    },
+    "Dish names with taste and value scores": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dish names with taste and value scores"
+          }
+        }
+      }
+    },
+    "Dish not found": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dish not found"
+          }
+        }
+      }
+    },
+    "Dish note": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dish note"
+          }
+        }
+      }
+    },
+    "Dish scores": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dish scores"
+          }
+        }
+      }
+    },
+    "Dishes": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dishes"
+          }
+        }
+      }
+    },
+    "Done": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "Edit": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Edit"
+          }
+        }
+      }
+    },
+    "Edit %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Edit %@"
+          }
+        }
+      }
+    },
+    "Edit Diner": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Edit Diner"
+          }
+        }
+      }
+    },
+    "Edit Dish": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Edit Dish"
+          }
+        }
+      }
+    },
+    "Edit Visit": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Edit Visit"
+          }
+        }
+      }
+    },
+    "Edit or delete this visit": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Edit or delete this visit"
+          }
+        }
+      }
+    },
+    "Edit visit · Step %lld of 3": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Edit visit · Step %lld of 3"
+          }
+        }
+      }
+    },
+    "Experience": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Experience"
+          }
+        }
+      }
+    },
+    "Experience %lld out of 10": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Experience %lld out of 10"
+          }
+        }
+      }
+    },
+    "Experience history": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Experience history"
+          }
+        }
+      }
+    },
+    "Export": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Export"
+          }
+        }
+      }
+    },
+    "Export ready": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Export ready"
+          }
+        }
+      }
+    },
+    "Filters": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Filters"
+          }
+        }
+      }
+    },
+    "Format": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Format"
+          }
+        }
+      }
+    },
+    "Generating…": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Generating…"
+          }
+        }
+      }
+    },
+    "Heads-up": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Heads-up"
+          }
+        }
+      }
+    },
+    "Heads-up: none": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Heads-up: none"
+          }
+        }
+      }
+    },
+    "Highest average": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Highest average"
+          }
+        }
+      }
+    },
+    "History": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "History"
+          }
+        }
+      }
+    },
+    "How was the visit?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "How was the visit?"
+          }
+        }
+      }
+    },
+    "Improving": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Improving"
+          }
+        }
+      }
+    },
+    "Include photos": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Include photos"
+          }
+        }
+      }
+    },
+    "Journal": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Journal"
+          }
+        }
+      }
+    },
+    "Keep Editing": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Keep Editing"
+          }
+        }
+      }
+    },
+    "Keep On": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Keep On"
+          }
+        }
+      }
+    },
+    "Keep your journal on all your devices": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Keep your journal on all your devices"
+          }
+        }
+      }
+    },
+    "Last ordered": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Last ordered"
+          }
+        }
+      }
+    },
+    "Last synced %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Last synced %@"
+          }
+        }
+      }
+    },
+    "Last synced just now": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Last synced just now"
+          }
+        }
+      }
+    },
+    "Last visited": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Last visited"
+          }
+        }
+      }
+    },
+    "Last visited 1+ week ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Last visited 1+ week ago"
+          }
+        }
+      }
+    },
+    "Last visited 3+ months ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Last visited 3+ months ago"
+          }
+        }
+      }
+    },
+    "Last visited 3+ weeks ago": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Last visited 3+ weeks ago"
+          }
+        }
+      }
+    },
+    "Log your first meal and it will appear here.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Log your first meal and it will appear here."
+          }
+        }
+      }
+    },
+    "Log your first meal to start your journal.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Log your first meal to start your journal."
+          }
+        }
+      }
+    },
+    "May be contributed": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "May be contributed"
+          }
+        }
+      }
+    },
+    "Me": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Me"
+          }
+        }
+      }
+    },
+    "Minimum average": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Minimum average"
+          }
+        }
+      }
+    },
+    "Most recent": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Most recent"
+          }
+        }
+      }
+    },
+    "Most visits": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Most visits"
+          }
+        }
+      }
+    },
+    "My journal": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "My journal"
+          }
+        }
+      }
+    },
+    "Name": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "Never contributed": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Never contributed"
+          }
+        }
+      }
+    },
+    "New Diner": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "New Diner"
+          }
+        }
+      }
+    },
+    "New Log": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "New Log"
+          }
+        }
+      }
+    },
+    "Newest first": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Newest first"
+          }
+        }
+      }
+    },
+    "No": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No"
+          }
+        }
+      }
+    },
+    "No dishes here are flagged for your diners.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No dishes here are flagged for your diners."
+          }
+        }
+      }
+    },
+    "No dishes logged": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No dishes logged"
+          }
+        }
+      }
+    },
+    "No dishes match this filter.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No dishes match this filter."
+          }
+        }
+      }
+    },
+    "No further data will be shared from this iPhone.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No further data will be shared from this iPhone."
+          }
+        }
+      }
+    },
+    "No matches": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No matches"
+          }
+        }
+      }
+    },
+    "No photos": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No photos"
+          }
+        }
+      }
+    },
+    "No visits yet": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "No visits yet"
+          }
+        }
+      }
+    },
+    "Not enough history yet": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Not enough history yet"
+          }
+        }
+      }
+    },
+    "Not enough visits yet": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Not enough visits yet"
+          }
+        }
+      }
+    },
+    "Not set": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Not set"
+          }
+        }
+      }
+    },
+    "Note (optional)": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Note (optional)"
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Off": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Off"
+          }
+        }
+      }
+    },
+    "Off unless you turn it on. Chef's Journal has no insights service yet, so nothing is sent today; this saves your choice.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Off unless you turn it on. Chef's Journal has no insights service yet, so nothing is sent today; this saves your choice."
+          }
+        }
+      }
+    },
+    "On": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "On"
+          }
+        }
+      }
+    },
+    "Opens the restaurant": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Opens the restaurant"
+          }
+        }
+      }
+    },
+    "Ordered by": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Ordered by"
+          }
+        }
+      }
+    },
+    "PDF": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "PDF"
+          }
+        }
+      }
+    },
+    "PDF has one section per restaurant.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "PDF has one section per restaurant."
+          }
+        }
+      }
+    },
+    "Phone owner · Can’t be deleted": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Phone owner · Can’t be deleted"
+          }
+        }
+      }
+    },
+    "Photo": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Photo"
+          }
+        }
+      }
+    },
+    "Photos included": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Photos included"
+          }
+        }
+      }
+    },
+    "Privacy & Insights": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Privacy & Insights"
+          }
+        }
+      }
+    },
+    "Private on this iPhone": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Private on this iPhone"
+          }
+        }
+      }
+    },
+    "Private, synced with iCloud": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Private, synced with iCloud"
+          }
+        }
+      }
+    },
+    "Problem for": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Problem for"
+          }
+        }
+      }
+    },
+    "Problem for, %@: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Problem for, %@: %@"
+          }
+        }
+      }
+    },
+    "Problem for: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Problem for: %@"
+          }
+        }
+      }
+    },
+    "Problem for: nobody": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Problem for: nobody"
+          }
+        }
+      }
+    },
+    "Profiles only suggest who a tag may affect. Nothing is flagged automatically.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Profiles only suggest who a tag may affect. Nothing is flagged automatically."
+          }
+        }
+      }
+    },
+    "Recent visits": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Recent visits"
+          }
+        }
+      }
+    },
+    "Recently visited": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Recently visited"
+          }
+        }
+      }
+    },
+    "Remove Photo": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Remove Photo"
+          }
+        }
+      }
+    },
+    "Remove filter %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Remove filter %@"
+          }
+        }
+      }
+    },
+    "Reset all filters": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Reset all filters"
+          }
+        }
+      }
+    },
+    "Restaurant": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Restaurant"
+          }
+        }
+      }
+    },
+    "Restaurant experience": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Restaurant experience"
+          }
+        }
+      }
+    },
+    "Restaurant name": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Restaurant name"
+          }
+        }
+      }
+    },
+    "Restaurant names with experience scores": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Restaurant names with experience scores"
+          }
+        }
+      }
+    },
+    "Restaurant, dish, or note": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Restaurant, dish, or note"
+          }
+        }
+      }
+    },
+    "Restaurants": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Restaurants"
+          }
+        }
+      }
+    },
+    "Save": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Save"
+          }
+        }
+      }
+    },
+    "Save Log": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Save Log"
+          }
+        }
+      }
+    },
+    "Score": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Score"
+          }
+        }
+      }
+    },
+    "Series": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Series"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "Show": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Show"
+          }
+        }
+      }
+    },
+    "Slipping": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Slipping"
+          }
+        }
+      }
+    },
+    "Some details are missing. Check the restaurant, scores and dishes.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Some details are missing. Check the restaurant, scores and dishes."
+          }
+        }
+      }
+    },
+    "Something went wrong": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Something went wrong"
+          }
+        }
+      }
+    },
+    "Something went wrong.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Something went wrong."
+          }
+        }
+      }
+    },
+    "Sort by": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Sort by"
+          }
+        }
+      }
+    },
+    "Spicy": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Spicy"
+          }
+        }
+      }
+    },
+    "Steady": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Steady"
+          }
+        }
+      }
+    },
+    "Step %lld of 3": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Step %lld of 3"
+          }
+        }
+      }
+    },
+    "Sync failed: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Sync failed: %@"
+          }
+        }
+      }
+    },
+    "Sync needs an iCloud container from an Apple Developer team. Your journal stays on this iPhone until it’s set up.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Sync needs an iCloud container from an Apple Developer team. Your journal stays on this iPhone until it’s set up."
+          }
+        }
+      }
+    },
+    "Sync uses your own private iCloud database. Nobody else, including us, can read it.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Sync uses your own private iCloud database. Nobody else, including us, can read it."
+          }
+        }
+      }
+    },
+    "Syncing…": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Syncing…"
+          }
+        }
+      }
+    },
+    "Tag name": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Tag name"
+          }
+        }
+      }
+    },
+    "Tagged, but not marked as a problem for a diner. No Heads-up will be created.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Tagged, but not marked as a problem for a diner. No Heads-up will be created."
+          }
+        }
+      }
+    },
+    "Tags": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Tags"
+          }
+        }
+      }
+    },
+    "Take Photo": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Take Photo"
+          }
+        }
+      }
+    },
+    "Take-out": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Take-out"
+          }
+        }
+      }
+    },
+    "Tap to edit": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Tap to edit"
+          }
+        }
+      }
+    },
+    "Tap to edit or delete": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Tap to edit or delete"
+          }
+        }
+      }
+    },
+    "Taste": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Taste"
+          }
+        }
+      }
+    },
+    "Taste %lld out of 10, value %lld out of 10": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Taste %lld out of 10, value %lld out of 10"
+          }
+        }
+      }
+    },
+    "Taste and value stay separate.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Taste and value stay separate."
+          }
+        }
+      }
+    },
+    "That photo couldn’t be read. Try a different one.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "That photo couldn’t be read. Try a different one."
+          }
+        }
+      }
+    },
+    "That photo couldn’t be saved. Please try again.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "That photo couldn’t be saved. Please try again."
+          }
+        }
+      }
+    },
+    "The PDF couldn’t be created. Please try again.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The PDF couldn’t be created. Please try again."
+          }
+        }
+      }
+    },
+    "The restaurant, scores and dishes you entered will be lost.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The restaurant, scores and dishes you entered will be lost."
+          }
+        }
+      }
+    },
+    "Their dishes stay in your journal but are no longer attributed to anyone, and their Heads-up flags are removed.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Their dishes stay in your journal but are no longer attributed to anyone, and their Heads-up flags are removed."
+          }
+        }
+      }
+    },
+    "This dish is no longer in your journal.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This dish is no longer in your journal."
+          }
+        }
+      }
+    },
+    "This is the only dish in its visit. You can delete just the dish, or the whole visit.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This is the only dish in its visit. You can delete just the dish, or the whole visit."
+          }
+        }
+      }
+    },
+    "This is the only visit here, so the restaurant will be removed from your journal too.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This is the only visit here, so the restaurant will be removed from your journal too."
+          }
+        }
+      }
+    },
+    "This removes it from that visit. Other visits are not affected.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This removes it from that visit. Other visits are not affected."
+          }
+        }
+      }
+    },
+    "This removes the visit and every dish logged in it.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This removes the visit and every dish logged in it."
+          }
+        }
+      }
+    },
+    "Today": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Today"
+          }
+        }
+      }
+    },
+    "Trend: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Trend: %@"
+          }
+        }
+      }
+    },
+    "Try a different search or fewer filters.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Try a different search or fewer filters."
+          }
+        }
+      }
+    },
+    "Turn Off": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Turn Off"
+          }
+        }
+      }
+    },
+    "Turn off contribution?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Turn off contribution?"
+          }
+        }
+      }
+    },
+    "Unset": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Unset"
+          }
+        }
+      }
+    },
+    "Value": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Value"
+          }
+        }
+      }
+    },
+    "Vegan": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Vegan"
+          }
+        }
+      }
+    },
+    "Vegetarian": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Vegetarian"
+          }
+        }
+      }
+    },
+    "Visit note": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Visit note"
+          }
+        }
+      }
+    },
+    "Visit saved to your journal": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Visit saved to your journal"
+          }
+        }
+      }
+    },
+    "Visit type": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Visit type"
+          }
+        }
+      }
+    },
+    "Visits": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Visits"
+          }
+        }
+      }
+    },
+    "What did you order?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "What did you order?"
+          }
+        }
+      }
+    },
+    "What should future you remember?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "What should future you remember?"
+          }
+        }
+      }
+    },
+    "Where did you eat?": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Where did you eat?"
+          }
+        }
+      }
+    },
+    "Who you are, or when and where you ate": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Who you are, or when and where you ate"
+          }
+        }
+      }
+    },
+    "Would order again": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Would order again"
+          }
+        }
+      }
+    },
+    "Would order again only": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Would order again only"
+          }
+        }
+      }
+    },
+    "Yes": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Yes"
+          }
+        }
+      }
+    },
+    "Yesterday": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Yesterday"
+          }
+        }
+      }
+    },
+    "You rate it %@ on average. Last visited %@.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "You rate it %@ on average. Last visited %@."
+          }
+        }
+      }
+    },
+    "Your data": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Your data"
+          }
+        }
+      }
+    },
+    "Your journal couldn’t be saved. Please try again.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Your journal couldn’t be saved. Please try again."
+          }
+        }
+      }
+    },
+    "Your journal currently stays private on this iPhone.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Your journal currently stays private on this iPhone."
+          }
+        }
+      }
+    },
+    "Your journal is empty.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Your journal is empty."
+          }
+        }
+      }
+    },
+    "Your notes and photos": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Your notes and photos"
+          }
+        }
+      }
+    },
+    "Your restaurants": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Your restaurants"
+          }
+        }
+      }
+    },
+    "iCloud sync": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "iCloud sync"
+          }
+        }
+      }
+    },
+    "iCloud sync isn’t set up in this build of Chef's Journal.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "iCloud sync isn’t set up in this build of Chef's Journal."
+          }
+        }
+      }
+    },
+    "—": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "—"
+          }
+        }
+      }
+    },
+    "“%@”": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "“%@”"
+          }
+        }
+      }
+    },
+    "“Me” is the phone owner and can’t be deleted.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "“Me” is the phone owner and can’t be deleted."
+          }
+        }
+      }
+    },
+    "“—” means any average. Restaurant taste and value use the averages of their dishes.": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "“—” means any average. Restaurant taste and value use the averages of their dishes."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
