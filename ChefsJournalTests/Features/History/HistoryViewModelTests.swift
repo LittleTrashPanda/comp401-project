@@ -37,3 +37,17 @@ struct HistoryViewModelTests {
         #expect(viewModel.filter.searchText == "sushi")
     }
 }
+
+@MainActor
+struct HistoryViewModelCancellationTests {
+    @Test func cancelledRefreshDoesNotOverwriteResults() async throws {
+        let snapshots = try PreviewData.visitSnapshots(now: .now)
+        let viewModel = HistoryViewModel()
+
+        let task = Task { await viewModel.refresh(visits: snapshots) }
+        task.cancel()
+        await task.value
+
+        #expect(viewModel.results.isEmpty)
+    }
+}

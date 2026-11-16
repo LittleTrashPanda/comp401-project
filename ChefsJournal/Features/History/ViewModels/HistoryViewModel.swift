@@ -30,7 +30,10 @@ final class HistoryViewModel: ObservableObject {
 
     func refresh(visits: [VisitSnapshot], now: Date = .now) async {
         let currentFilter = filter
-        results = await Self.query(visits: visits, filter: currentFilter, now: now)
+        let found = await Self.query(visits: visits, filter: currentFilter, now: now)
+        // A newer search or filter replaced this one while it ran; its results would be stale.
+        guard !Task.isCancelled else { return }
+        results = found
         let dishes = visits.flatMap(\.dishes)
         let usedTags = Set(dishes.flatMap(\.flags).map(\.tag))
         let presets = DietaryTag.allCases.map(\.rawValue)

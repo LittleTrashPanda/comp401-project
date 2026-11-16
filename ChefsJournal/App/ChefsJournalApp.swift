@@ -6,12 +6,14 @@ import SwiftUI
 struct ChefsJournalApp: App {
     @State private var modelContainer: ModelContainer
     @State private var journalStore: JournalStore
+    @State private var didFailToOpenStore: Bool
     @AppStorage(PreferenceKey.iCloudSyncEnabled) private var isSyncEnabled = false
 
     init() {
-        let container = AppLaunch.makeModelContainer(cloudKit: CloudSyncConfiguration.isActive())
-        _modelContainer = State(initialValue: container)
-        _journalStore = State(initialValue: JournalStore(modelContext: container.mainContext))
+        let launch = AppLaunch.openJournal(cloudKit: CloudSyncConfiguration.isActive())
+        _modelContainer = State(initialValue: launch.container)
+        _journalStore = State(initialValue: JournalStore(modelContext: launch.container.mainContext))
+        _didFailToOpenStore = State(initialValue: launch.didFailToOpenStore)
     }
 
     var body: some Scene {
@@ -19,6 +21,11 @@ struct ChefsJournalApp: App {
             RootTabView(store: journalStore)
                 .id(ObjectIdentifier(modelContainer))
                 .onChange(of: isSyncEnabled) { rebuildContainer() }
+                .alert("Your journal couldn’t be opened", isPresented: $didFailToOpenStore) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text("Anything you log now won’t be kept after you close the app. Restart Chef's Journal to try again.")
+                }
         }
         .modelContainer(modelContainer)
     }
@@ -26,9 +33,10 @@ struct ChefsJournalApp: App {
     /// Reopens the store with or without CloudKit when the sync preference changes.
     private func rebuildContainer() {
         guard CloudSyncConfiguration.isAvailable else { return }
-        let container = AppLaunch.makeModelContainer(cloudKit: CloudSyncConfiguration.isActive())
-        modelContainer = container
-        journalStore = JournalStore(modelContext: container.mainContext)
+        let launch = AppLaunch.openJournal(cloudKit: CloudSyncConfiguration.isActive())
+        modelContainer = launch.container
+        journalStore = JournalStore(modelContext: launch.container.mainContext)
+        didFailToOpenStore = launch.didFailToOpenStore
     }
 }
 
@@ -40,16 +48,25 @@ enum AppLaunch {
     static let seedLargeJournalArgument = "-seedLargeJournal"
     private static let largeJournalVisitCount = 500
 
-    static func makeModelContainer(cloudKit: Bool) -> ModelContainer {
-        let arguments = ProcessInfo.processInfo.arguments
+    struct Result {
+        let container: ModelContainer
+        /// True when the on-disk store failed and a temporary in-memory one is in use.
+        let didFailToOpenStore: Bool
+    }
+
+    static func openJournal(
+        cloudKit: Bool,
+        arguments: [String] = ProcessInfo.processInfo.arguments,
+        makeContainer: (_ inMemory: Bool, _ cloudKit: Bool) throws -> ModelContainer = ModelContainerFactory.make
+    ) -> Result {
         let inMemory = arguments.contains(uiTestingArgument)
         do {
-            let container = try ModelContainerFactory.make(inMemory: inMemory, cloudKit: cloudKit && !inMemory)
+            let container = try makeContainer(inMemory, cloudKit && !inMemory)
             seedIfRequested(container, arguments: arguments)
-            return container
+            return Result(container: container, didFailToOpenStore: false)
         } catch {
             Logger.persistence.fault("Opening the journal failed: \(error.localizedDescription, privacy: .public)")
-            return makeFallbackContainer()
+            return Result(container: makeFallbackContainer(), didFailToOpenStore: true)
         }
     }
 
