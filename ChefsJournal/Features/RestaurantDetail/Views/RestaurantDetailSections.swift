@@ -27,22 +27,33 @@ struct RestaurantHeaderView: View {
     }
 }
 
-/// Latest experience stamp; the chart arrives once there are enough visits.
+/// Experience chart with ≥ 2 visits and a trend badge with ≥ 3; otherwise the latest stamp.
 struct ExperienceHistorySection: View {
-    let latestExperience: Int?
-    let visitCount: Int
+    let display: RestaurantDetailDisplay
+
+    private static let minimumChartPoints = 2
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.s) {
-            Text("Experience history")
-                .font(.headline)
-            HStack(spacing: Spacing.m) {
-                if let latestExperience {
-                    ExperienceStampView(score: latestExperience)
+            HStack {
+                Text("Experience history")
+                    .font(.headline)
+                Spacer()
+                if let trend = display.trend {
+                    TrendBadgeView(trend: trend)
                 }
-                Text("Not enough visits yet")
-                    .font(.callout)
-                    .foregroundStyle(.journalMuted)
+            }
+            if display.experiencePoints.count >= Self.minimumChartPoints {
+                ScoreChartView(series: [.init(name: "Experience", points: display.experiencePoints, color: .journalTomato)])
+            } else {
+                HStack(spacing: Spacing.m) {
+                    if let latestExperience = display.latestExperience {
+                        ExperienceStampView(score: latestExperience)
+                    }
+                    Text("Not enough visits yet")
+                        .font(.callout)
+                        .foregroundStyle(.journalMuted)
+                }
             }
         }
     }

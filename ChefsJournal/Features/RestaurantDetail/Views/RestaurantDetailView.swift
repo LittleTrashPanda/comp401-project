@@ -18,7 +18,7 @@ struct RestaurantDetailView: View {
             LazyVStack(alignment: .leading, spacing: Spacing.section) {
                 RestaurantHeaderView(display: display)
                 HeadsUpBannerView(lines: display.headsUpLines)
-                ExperienceHistorySection(latestExperience: display.latestExperience, visitCount: visits.count)
+                ExperienceHistorySection(display: display)
                 RestaurantDishesSection(restaurantID: restaurantID, dishes: display.dishes,
                                         chips: display.filterChips, selection: $viewModel.dishFilter)
                 RestaurantVisitsSection(rows: display.visits) { row in

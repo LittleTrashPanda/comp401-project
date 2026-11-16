@@ -7,6 +7,9 @@ struct RestaurantDetailDisplay {
     let averageExperienceText: String
     let lastVisitedText: String
     let latestExperience: Int?
+    /// Experience scores oldest first, for the chart.
+    let experiencePoints: [ScoreChartView.Point]
+    let trend: Trend?
     let headsUpLines: [String]
     let filterChips: [DishFilterChip]
     let dishes: [RestaurantDishRow]

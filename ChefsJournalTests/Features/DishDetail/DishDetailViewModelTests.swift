@@ -38,3 +38,18 @@ struct DishDetailViewModelTests {
         #expect(DishDetailViewModel.makeDisplay(from: visits(), route: route, now: now, locale: locale) == nil)
     }
 }
+
+@MainActor
+struct DishDetailCompareTests {
+    @Test func californiaRollCompareListsTokyoThenCurrentSakura() throws {
+        let now = Date.now
+        let visits = try PreviewData.visitSnapshots(now: now)
+        let sakuraID = try #require(visits.first { $0.restaurantName == "Sakura Sushi" }?.restaurantID)
+        let display = try #require(DishDetailViewModel.makeDisplay(
+            from: visits, route: DishRoute(restaurantID: sakuraID, dishName: "California Roll"), now: now))
+
+        #expect(display.comparison.map(\.restaurantName) == ["Tokyo House", "Sakura Sushi"])
+        #expect(display.comparison.last?.isCurrent == true)
+        #expect(display.tastePoints.map(\.score) == [7])
+    }
+}

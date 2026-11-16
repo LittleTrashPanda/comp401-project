@@ -42,7 +42,12 @@ final class DishDetailViewModel: ObservableObject {
             averageTasteText: ScoreFormatting.average(averageTaste, locale: locale),
             averageValueText: ScoreFormatting.average(averageValue, locale: locale),
             lastOrdered: latest.date,
-            lastOrderedText: latest.date.lastVisitedDescription(relativeTo: now).string(in: locale)
+            lastOrderedText: latest.date.lastVisitedDescription(relativeTo: now).string(in: locale),
+            tastePoints: instances.reversed().map { ScoreChartView.Point(date: $0.date, score: $0.tasteScore) },
+            valuePoints: instances.reversed().map { ScoreChartView.Point(date: $0.date, score: $0.valueScore) },
+            trend: TrendCalculator.trend(for: instances.reversed().map(\.tasteScore)),
+            comparison: DishComparison.rows(for: route.dishName, currentRestaurantID: route.restaurantID,
+                                            dishes: visits.flatMap(\.dishes))
         )
     }
 

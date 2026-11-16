@@ -40,8 +40,11 @@ struct DishDetailView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Spacing.section) {
                 DishHeroView(photoData: latestEntry(display)?.photoData, display: display)
-                DishInstancesSection(instances: display.instances) { instance in
+                DishInstancesSection(display: display) { instance in
                     if let entry = viewModel.entry(withID: instance.id, in: visits) { viewModel.beginEditing(entry) }
+                }
+                if display.comparison.count > 1 {
+                    DishCompareSection(rows: display.comparison)
                 }
                 if let latest = latestEntry(display) {
                     Button("Delete this dish entry", systemImage: "trash", role: .destructive) {

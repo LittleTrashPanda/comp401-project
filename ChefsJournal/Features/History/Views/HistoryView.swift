@@ -126,6 +126,9 @@ private struct HistoryRow: View {
                 Text(viewModel.subtitle(for: result))
                     .font(.caption)
                     .foregroundStyle(.journalMuted)
+                if let trend = viewModel.trend(for: result) {
+                    TrendBadgeView(trend: trend)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Text(viewModel.averageText(for: result))

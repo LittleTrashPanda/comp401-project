@@ -57,13 +57,31 @@ struct DishHeroPhoto: View {
 
 /// Every instance of the dish at this restaurant, newest first. Tap to edit.
 struct DishInstancesSection: View {
-    let instances: [DishSnapshot]
+    let display: DishDetailDisplay
     let onSelect: (DishSnapshot) -> Void
+
+    private static let minimumChartPoints = 2
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             SectionHeading(title: "At this restaurant", detail: "Tap to edit")
-            ForEach(instances) { instance in
+            if let trend = display.trend {
+                TrendBadgeView(trend: trend)
+                    .padding(.bottom, Spacing.xs)
+            }
+            if display.tastePoints.count >= Self.minimumChartPoints {
+                ScoreChartView(series: [
+                    .init(name: "Taste", points: display.tastePoints, color: .journalCobalt),
+                    .init(name: "Value", points: display.valuePoints, color: .journalCobalt, isDashed: true),
+                ])
+                .padding(.bottom, Spacing.s)
+            } else {
+                Text("Not enough history yet")
+                    .font(.callout)
+                    .foregroundStyle(.journalMuted)
+                    .padding(.bottom, Spacing.xs)
+            }
+            ForEach(display.instances) { instance in
                 Button { onSelect(instance) } label: {
                     HStack(alignment: .top, spacing: Spacing.s) {
                         VStack(alignment: .leading, spacing: Spacing.xxs) {
@@ -85,5 +103,57 @@ struct DishInstancesSection: View {
                 Divider().overlay(.journalRule)
             }
         }
+    }
+}
+
+/// The same dish at each restaurant; the current restaurant's row is highlighted.
+struct DishCompareSection: View {
+    let rows: [ComparisonRow]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            SectionHeading(title: "Compare")
+            HStack {
+                Text("Restaurant")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Taste")
+                Text("Value")
+            }
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(.journalMuted)
+            .padding(.horizontal, Spacing.s)
+            .padding(.bottom, Spacing.xxs)
+            ForEach(rows) { row in
+                CompareRowView(row: row)
+            }
+        }
+    }
+}
+
+private struct CompareRowView: View {
+    let row: ComparisonRow
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: Spacing.xxs) {
+                Text(row.restaurantName)
+                    .font(.body.weight(row.isCurrent ? .semibold : .regular))
+                Text(row.date, format: .dateTime.day().month(.abbreviated).year())
+                    .font(.caption)
+                    .foregroundStyle(.journalMuted)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Text(row.tasteScore, format: .number)
+                .font(.journalScore)
+            Text(row.valueScore, format: .number)
+                .font(.journalScore)
+        }
+        .foregroundStyle(.journalInk)
+        .padding(Spacing.s)
+        .background(row.isCurrent ? Color.journalCobaltSoft : .clear, in: .rect(cornerRadius: Radius.small))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text(row.isCurrent
+            ? "\(row.restaurantName), this restaurant: taste \(row.tasteScore), value \(row.valueScore)"
+            : "\(row.restaurantName): taste \(row.tasteScore), value \(row.valueScore)"))
     }
 }

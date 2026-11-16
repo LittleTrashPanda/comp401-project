@@ -11,4 +11,9 @@ struct DishDetailDisplay: Equatable {
     let averageValueText: String
     let lastOrdered: Date
     let lastOrderedText: String
+    let tastePoints: [ScoreChartView.Point]
+    let valuePoints: [ScoreChartView.Point]
+    let trend: Trend?
+    /// The same dish at every restaurant, for the Compare table.
+    let comparison: [ComparisonRow]
 }

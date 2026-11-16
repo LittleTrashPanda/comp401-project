@@ -116,6 +116,10 @@ final class HistoryViewModel: ObservableObject {
         ScoreFormatting.average(result.average)
     }
 
+    func trend(for result: HistoryResult) -> Trend? {
+        TrendCalculator.trend(for: result.scoresOldestFirst)
+    }
+
     static func title(for lastVisited: HistoryFilter.LastVisited) -> LocalizedStringResource {
         switch lastVisited {
         case .oneWeek: "Last visited 1+ week ago"

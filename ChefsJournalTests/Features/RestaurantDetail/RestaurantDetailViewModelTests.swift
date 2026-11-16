@@ -44,3 +44,23 @@ struct RestaurantDetailViewModelTests {
         #expect(try journal.count(Restaurant.self) == 0)
     }
 }
+
+@MainActor
+struct RestaurantDetailTrendTests {
+    @Test func bellaChartsAllSixScoresAsSteady() throws {
+        let now = Date.now
+        let bella = try PreviewData.visitSnapshots(now: now).filter { $0.restaurantName == "Bella Italia" }
+        let display = RestaurantDetailViewModel.makeDisplay(from: bella, photos: [:], now: now)
+
+        #expect(display.experiencePoints.map(\.score) == [8, 9, 7, 8, 7, 8])
+        #expect(display.trend == .steady)
+    }
+
+    @Test func singleVisitHasNoTrend() throws {
+        let now = Date.now
+        let sakura = try PreviewData.visitSnapshots(now: now).filter { $0.restaurantName == "Sakura Sushi" }
+        let display = RestaurantDetailViewModel.makeDisplay(from: sakura, photos: [:], now: now)
+        #expect(display.trend == nil)
+        #expect(display.experiencePoints.count == 1)
+    }
+}

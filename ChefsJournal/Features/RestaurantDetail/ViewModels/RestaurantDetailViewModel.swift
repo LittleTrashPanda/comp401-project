@@ -30,6 +30,7 @@ final class RestaurantDetailViewModel: ObservableObject {
         let newestFirst = visits.sorted { $0.date > $1.date }
         let allDishes = visits.flatMap(\.dishes)
         let filteredDishes = RestaurantStatsCalculator.rankedLatestDishes(filter.apply(to: allDishes))
+        let oldestFirst = newestFirst.reversed()
         return RestaurantDetailDisplay(
             name: newestFirst.first?.restaurantName ?? "",
             area: newestFirst.first?.restaurantArea ?? "",
@@ -37,6 +38,8 @@ final class RestaurantDetailViewModel: ObservableObject {
             averageExperienceText: summary.averageExperience.map { ScoreFormatting.average($0, locale: locale) } ?? "—",
             lastVisitedText: summary.lastVisited.map { $0.lastVisitedDescription(relativeTo: now).string(in: locale) } ?? "—",
             latestExperience: newestFirst.first?.experienceScore,
+            experiencePoints: oldestFirst.map { ScoreChartView.Point(date: $0.date, score: $0.experienceScore) },
+            trend: TrendCalculator.trend(for: oldestFirst.map(\.experienceScore)),
             headsUpLines: HeadsUpCalculator.items(for: allDishes).map { $0.line(locale: locale) },
             filterChips: filterChips(for: allDishes, locale: locale),
             dishes: filteredDishes.map { dish in
