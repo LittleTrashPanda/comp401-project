@@ -37,6 +37,13 @@ final class MockJournalStore: JournalStoreProtocol {
         deletedVisits.append(visit)
     }
 
+    private(set) var updatedDishDrafts: [DishDraft] = []
+
+    func updateDish(_ dish: DishEntry, with draft: DishDraft) throws {
+        if let errorToThrow { throw errorToThrow }
+        updatedDishDrafts.append(draft)
+    }
+
     func deleteDish(_ dish: DishEntry) throws {
         if let errorToThrow { throw errorToThrow }
         deletedDishes.append(dish)

@@ -30,6 +30,11 @@ enum PreviewData {
         return visits.map(VisitSnapshot.init)
     }
 
+    static func restaurantID(named name: String, in container: ModelContainer) -> UUID {
+        let restaurants = (try? container.mainContext.fetch(FetchDescriptor<Restaurant>())) ?? []
+        return restaurants.first { $0.name == name }?.id ?? UUID()
+    }
+
     static func seed(into context: ModelContext, now: Date) throws {
         let store = JournalStore(modelContext: context)
         for draft in sampleVisits(now: now) {

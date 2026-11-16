@@ -9,6 +9,7 @@ protocol JournalStoreProtocol: AnyObject {
     @discardableResult func saveNewVisit(_ draft: VisitDraft) throws -> Visit
     func updateVisit(_ visit: Visit, with draft: VisitDraft) throws
     func deleteVisit(_ visit: Visit) throws
+    func updateDish(_ dish: DishEntry, with draft: DishDraft) throws
     func deleteDish(_ dish: DishEntry) throws
     func dishNameSuggestions(for restaurant: Restaurant) -> [String]
 }
@@ -77,6 +78,12 @@ final class JournalStore: JournalStoreProtocol {
     }
 
     // MARK: Dishes
+
+    func updateDish(_ dish: DishEntry, with draft: DishDraft) throws {
+        guard draft.isComplete else { throw JournalStoreError.invalidDraft }
+        apply(draft, to: dish)
+        try save()
+    }
 
     func deleteDish(_ dish: DishEntry) throws {
         modelContext.delete(dish)

@@ -29,7 +29,7 @@ struct JournalRowFormatter {
 
     func dateLine(for visit: VisitSnapshot, now: Date) -> String {
         let day = dayDescription(for: visit.date, now: now)
-        let visitType = String(localized: visit.visitType.title.withLocale(locale))
+        let visitType = visit.visitType.title.string(in: locale)
         return String(localized: "\(day) · \(visitType)", locale: locale)
     }
 
@@ -53,14 +53,6 @@ struct JournalRowFormatter {
             return String(localized: "Yesterday", locale: locale)
         }
         return date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated).locale(locale))
-    }
-}
-
-private extension LocalizedStringResource {
-    func withLocale(_ locale: Locale) -> LocalizedStringResource {
-        var copy = self
-        copy.locale = locale
-        return copy
     }
 }
 

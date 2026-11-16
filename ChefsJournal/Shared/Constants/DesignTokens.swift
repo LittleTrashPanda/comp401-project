@@ -81,6 +81,7 @@ enum Sizing {
     static let pressedOpacity: Double = 0.8
     static let chartHeight: CGFloat = 180
     static let heroAspectRatio: CGFloat = 4.0 / 3.0
+    static let heroPhotoSide: CGFloat = 360
     static let avatar: CGFloat = 40
 }
 

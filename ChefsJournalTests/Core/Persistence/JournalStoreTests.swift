@@ -101,3 +101,48 @@ struct JournalStoreTests {
         #expect(journal.store.dishNameSuggestions(for: restaurant) == ["california roll", "Miso Soup"])
     }
 }
+
+@MainActor
+struct JournalStoreUpdateTests {
+    @Test func updateVisitChangesScoreAndKeepsDishes() throws {
+        let journal = try TestJournal()
+        let visit = try journal.store.saveNewVisit(Fixtures.visit(experience: 5))
+        var draft = VisitDraft(visit: visit)
+        draft.experienceScore = 9
+
+        try journal.store.updateVisit(visit, with: draft)
+
+        #expect(visit.experienceScore == 9)
+        #expect(try journal.count(DishEntry.self) == 1)
+        #expect(visit.dishes?.first?.name == "California Roll")
+    }
+
+    @Test func updateVisitReplacesEditedAndRemovedDishes() throws {
+        let journal = try TestJournal()
+        let visit = try journal.store.saveNewVisit(Fixtures.visit(dishes: [Fixtures.dish("A"), Fixtures.dish("B")]))
+        var draft = VisitDraft(visit: visit)
+        draft.dishes[0].tasteScore = 2
+        draft.dishes.remove(at: 1)
+        draft.dishes.append(Fixtures.dish("C"))
+
+        try journal.store.updateVisit(visit, with: draft)
+
+        #expect(visit.orderedDishes.map(\.name) == ["A", "C"])
+        #expect(visit.orderedDishes.first?.tasteScore == 2)
+        #expect(try journal.count(DishEntry.self) == 2)
+    }
+
+    @Test func updateDishAppliesDraft() throws {
+        let journal = try TestJournal()
+        let visit = try journal.store.saveNewVisit(Fixtures.visit())
+        let dish = try #require(visit.dishes?.first)
+        var draft = DishDraft(entry: dish)
+        draft.valueScore = 3
+        draft.note = "Smaller this time"
+
+        try journal.store.updateDish(dish, with: draft)
+
+        #expect(dish.valueScore == 3)
+        #expect(dish.note == "Smaller this time")
+    }
+}

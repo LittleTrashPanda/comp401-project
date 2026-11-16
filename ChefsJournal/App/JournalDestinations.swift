@@ -3,10 +3,12 @@ import SwiftUI
 extension View {
     /// Registers the value-based destinations shared by the Journal and History stacks.
     func journalDestinations(store: any JournalStoreProtocol) -> some View {
-        navigationDestination(for: RestaurantRoute.self) { route in
-            Text("Restaurant")
-                .navigationTitle("Restaurant")
-                .id(route.id)
-        }
+        self
+            .navigationDestination(for: RestaurantRoute.self) { route in
+                RestaurantDetailView(store: store, restaurantID: route.id)
+            }
+            .navigationDestination(for: DishRoute.self) { route in
+                DishDetailView(store: store, route: route)
+            }
     }
 }
