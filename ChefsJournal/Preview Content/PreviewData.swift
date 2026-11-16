@@ -37,9 +37,22 @@ enum PreviewData {
 
     static func seed(into context: ModelContext, now: Date) throws {
         let store = JournalStore(modelContext: context)
-        for draft in sampleVisits(now: now) {
+        try store.seedOwnerIfNeeded()
+        let owner = try store.diners().first { $0.isOwner }
+        let diners = SampleDiners(
+            me: owner?.id,
+            liam: try store.addDiner(name: "Liam", dietaryProfile: "").id,
+            eliza: try store.addDiner(name: "Eliza", dietaryProfile: "Gluten intolerant").id
+        )
+        for draft in sampleVisits(now: now, diners: diners) {
             try store.saveNewVisit(draft)
         }
+    }
+
+    struct SampleDiners {
+        let me: UUID?
+        let liam: UUID
+        let eliza: UUID
     }
 
     /// Generates many visits to check that large journals stay responsive.
@@ -60,8 +73,8 @@ enum PreviewData {
         }
     }
 
-    static func sampleVisits(now: Date) -> [VisitDraft] {
-        sakuraAndTokyo() + bellaItalia(now: now) + hearthside(now: now)
+    static func sampleVisits(now: Date, diners: SampleDiners) -> [VisitDraft] {
+        sakuraAndTokyo(diners: diners) + bellaItalia(now: now, diners: diners) + hearthside(now: now)
     }
 
     private static func daysAgo(_ days: Int, from now: Date) -> Date {
@@ -72,7 +85,7 @@ enum PreviewData {
         calendar.date(from: DateComponents(year: year, month: month, day: day, hour: 19)) ?? .now
     }
 
-    private static func sakuraAndTokyo() -> [VisitDraft] {
+    private static func sakuraAndTokyo(diners: SampleDiners) -> [VisitDraft] {
         [
             VisitDraft(
                 restaurantName: "Tokyo House", restaurantArea: "Uptown",
@@ -86,12 +99,14 @@ enum PreviewData {
                 date: fixedDate(year: 2026, month: 11, day: 6), visitType: .dineIn, experienceScore: 5,
                 note: "Long wait and cramped seating. Get take-out next time.",
                 dishes: [DishDraft(name: "California Roll", tasteScore: 7, valueScore: 9, wouldOrderAgain: true,
-                                   note: "Generous portion for the price. Compare with Tokyo House.")]
+                                   note: "Generous portion for the price. Compare with Tokyo House.",
+                                   orderedByDinerID: diners.me,
+                                   flags: [DietaryFlagDraft(tag: DietaryTag.containsShellfish.rawValue)])]
             ),
         ]
     }
 
-    private static func bellaItalia(now: Date) -> [VisitDraft] {
+    private static func bellaItalia(now: Date, diners: SampleDiners) -> [VisitDraft] {
         let scoresOldestFirst = [8, 9, 7, 8, 7, 8]
         let lastVisitDaysAgo = 21
         let daysBetweenVisits = 30
@@ -102,18 +117,20 @@ enum PreviewData {
                 date: daysAgo(lastVisitDaysAgo + visitsAfterThis * daysBetweenVisits, from: now),
                 visitType: .dineIn, experienceScore: score,
                 note: index == scoresOldestFirst.count - 1 ? "Family dinner. Ask for the corner table." : "",
-                dishes: bellaDishes(visitIndex: index)
+                dishes: bellaDishes(visitIndex: index, diners: diners)
             )
         }
     }
 
-    private static func bellaDishes(visitIndex: Int) -> [DishDraft] {
+    private static func bellaDishes(visitIndex: Int, diners: SampleDiners) -> [DishDraft] {
         let carbonara = DishDraft(name: "Spaghetti Carbonara", tasteScore: visitIndex.isMultiple(of: 2) ? 8 : 9,
-                                  valueScore: 7, wouldOrderAgain: true)
+                                  valueScore: 7, wouldOrderAgain: true, orderedByDinerID: diners.liam)
         guard visitIndex >= 4 else { return [carbonara] }
         let calzone = DishDraft(name: "Calzone", tasteScore: 7, valueScore: 6, wouldOrderAgain: false,
-                                note: "Eliza felt unwell afterwards.")
-        let tiramisu = DishDraft(name: "Tiramisu", tasteScore: 9, valueScore: 8, wouldOrderAgain: true)
+                                note: "Eliza felt unwell afterwards.", orderedByDinerID: diners.eliza,
+                                flags: [DietaryFlagDraft(tag: DietaryTag.containsGluten.rawValue, problemForDinerIDs: [diners.eliza])])
+        let tiramisu = DishDraft(name: "Tiramisu", tasteScore: 9, valueScore: 8, wouldOrderAgain: true,
+                                 orderedByDinerID: diners.me)
         return [carbonara, calzone, tiramisu]
     }
 

@@ -1,3 +1,4 @@
+import os
 import SwiftUI
 
 struct RootTabView: View {
@@ -12,10 +13,19 @@ struct RootTabView: View {
                 PlaceholderTab(title: "History")
             }
             Tab("Settings", systemImage: "gearshape") {
-                PlaceholderTab(title: "Settings")
+                SettingsView(store: store)
             }
         }
         .tint(.journalCobalt)
+        .task { seedOwner() }
+    }
+
+    private func seedOwner() {
+        do {
+            try store.seedOwnerIfNeeded()
+        } catch {
+            Logger.persistence.error("Creating the owner diner failed: \(error.localizedDescription, privacy: .public)")
+        }
     }
 }
 

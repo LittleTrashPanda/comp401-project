@@ -52,10 +52,29 @@ struct ExperienceHistorySection: View {
 struct RestaurantDishesSection: View {
     let restaurantID: UUID?
     let dishes: [RestaurantDishRow]
+    let chips: [DishFilterChip]
+    @Binding var selection: RestaurantDishFilter
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             SectionHeading(title: "Dishes", detail: "Best first")
+            if chips.count > 1 {
+                ScrollView(.horizontal) {
+                    HStack(spacing: Spacing.xs) {
+                        ForEach(chips) { chip in
+                            ChipView(chip.title, kind: .selectable(isSelected: chip.filter == selection) { selection = chip.filter })
+                        }
+                    }
+                }
+                .scrollIndicators(.hidden)
+                .padding(.bottom, Spacing.xs)
+            }
+            if dishes.isEmpty {
+                Text("No dishes match this filter.")
+                    .font(.callout)
+                    .foregroundStyle(.journalMuted)
+                    .padding(.vertical, Spacing.s)
+            }
             ForEach(dishes) { dish in
                 if let restaurantID {
                     NavigationLink(value: DishRoute(restaurantID: restaurantID, dishName: dish.name)) {

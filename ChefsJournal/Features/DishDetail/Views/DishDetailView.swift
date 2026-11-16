@@ -26,8 +26,9 @@ struct DishDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .modifier(DishDetailDialogs(viewModel: viewModel, instanceCount: instanceCount))
         .sheet(item: $viewModel.editorContext) { context in
-            DishEditorSheet(context: context, suggestions: [], onDone: viewModel.saveEdit)
+            DishEditorSheet(context: context, suggestions: [], diners: viewModel.diners, onDone: viewModel.saveEdit)
         }
+        .task { viewModel.loadDiners() }
         .onChange(of: viewModel.shouldDismiss) { _, shouldDismiss in if shouldDismiss { dismiss() } }
     }
 
@@ -89,11 +90,11 @@ private struct DishDetailDialogs: ViewModifier {
     }
 
     private var deletionBinding: Binding<Bool> {
-        Binding(get: { viewModel.dishPendingDeletion != nil }, set: { if !$0 { viewModel.dishPendingDeletion = nil } })
+        Binding(get: { viewModel.dishPendingDeletion != nil }, set: { if !$0, viewModel.dishPendingDeletion != nil { viewModel.dishPendingDeletion = nil } })
     }
 
     private var errorBinding: Binding<Bool> {
-        Binding(get: { viewModel.errorMessage != nil }, set: { if !$0 { viewModel.errorMessage = nil } })
+        Binding(get: { viewModel.errorMessage != nil }, set: { if !$0, viewModel.errorMessage != nil { viewModel.errorMessage = nil } })
     }
 }
 

@@ -9,6 +9,9 @@ struct VisitDetailsStep: View {
             Text(viewModel.draft.restaurantName)
                 .font(.journalRowName)
                 .foregroundStyle(.journalCobalt)
+            if !viewModel.headsUpLines.isEmpty {
+                HeadsUpBannerView(lines: viewModel.headsUpLines)
+            }
             if viewModel.isNewRestaurant {
                 JournalTextField(title: "Area or address (optional)", text: $viewModel.draft.restaurantArea)
             }

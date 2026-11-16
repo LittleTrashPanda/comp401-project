@@ -4,7 +4,11 @@ extension DishDraft {
     /// A draft prefilled from a saved entry; keeps the entry's id so updates replace it.
     init(entry: DishEntry) {
         self.init(id: entry.id, name: entry.name, tasteScore: entry.tasteScore, valueScore: entry.valueScore,
-                  wouldOrderAgain: entry.wouldOrderAgain, note: entry.note, photoData: entry.photoData)
+                  wouldOrderAgain: entry.wouldOrderAgain, note: entry.note, photoData: entry.photoData,
+                  orderedByDinerID: entry.orderedBy?.id,
+                  flags: (entry.flags ?? []).sorted { $0.tag < $1.tag }.map { flag in
+                      DietaryFlagDraft(tag: flag.tag, problemForDinerIDs: Set((flag.problemFor ?? []).map(\.id)))
+                  })
     }
 }
 

@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 enum ModelContainerFactory {
-    static let modelTypes: [any PersistentModel.Type] = [Restaurant.self, Visit.self, DishEntry.self]
+    static let modelTypes: [any PersistentModel.Type] = [Restaurant.self, Visit.self, DishEntry.self, Diner.self, DietaryFlag.self]
 
     static func make(inMemory: Bool) throws -> ModelContainer {
         let schema = Schema(modelTypes)

@@ -5,6 +5,7 @@ struct RestaurantDetailView: View {
     @StateObject private var viewModel: RestaurantDetailViewModel
     @Query private var visits: [Visit]
     @Environment(\.dismiss) private var dismiss
+    @State private var visitForActions: Visit?
 
     init(store: any JournalStoreProtocol, restaurantID: UUID) {
         _viewModel = StateObject(wrappedValue: RestaurantDetailViewModel(store: store))
@@ -16,10 +17,12 @@ struct RestaurantDetailView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Spacing.section) {
                 RestaurantHeaderView(display: display)
+                HeadsUpBannerView(lines: display.headsUpLines)
                 ExperienceHistorySection(latestExperience: display.latestExperience, visitCount: visits.count)
-                RestaurantDishesSection(restaurantID: restaurantID, dishes: display.dishes)
+                RestaurantDishesSection(restaurantID: restaurantID, dishes: display.dishes,
+                                        chips: display.filterChips, selection: $viewModel.dishFilter)
                 RestaurantVisitsSection(rows: display.visits) { row in
-                    if let visit = visits.first(where: { $0.id == row.id }) { viewModel.showActions(for: visit) }
+                    visitForActions = visits.first { $0.id == row.id }
                 }
             }
             .padding(.horizontal, Spacing.gutter)
@@ -32,7 +35,7 @@ struct RestaurantDetailView: View {
                 Button("Edit") { viewModel.beginEditing(latest) }
             }
         }
-        .modifier(RestaurantDetailDialogs(viewModel: viewModel, visitCount: visits.count))
+        .modifier(RestaurantDetailDialogs(viewModel: viewModel, visitForActions: $visitForActions, visitCount: visits.count))
         .sheet(item: $viewModel.editContext) { context in
             NewVisitSheet(store: viewModel.store, mode: .edit(context.visit, draft: context.draft))
         }
@@ -46,12 +49,13 @@ struct RestaurantDetailView: View {
 /// The visit action sheet and delete confirmation, using the Figma copy.
 private struct RestaurantDetailDialogs: ViewModifier {
     @ObservedObject var viewModel: RestaurantDetailViewModel
+    @Binding var visitForActions: Visit?
     let visitCount: Int
 
     func body(content: Content) -> some View {
         content
             .confirmationDialog("Edit or delete this visit", isPresented: actionsBinding, titleVisibility: .visible,
-                                presenting: viewModel.visitForActions) { visit in
+                                presenting: visitForActions) { visit in
                 Button("Edit Visit") { viewModel.beginEditing(visit) }
                 Button("Delete Visit", role: .destructive) { viewModel.requestDelete(visit) }
             }
@@ -71,15 +75,15 @@ private struct RestaurantDetailDialogs: ViewModifier {
     }
 
     private var actionsBinding: Binding<Bool> {
-        Binding(get: { viewModel.visitForActions != nil }, set: { if !$0 { viewModel.visitForActions = nil } })
+        Binding(get: { visitForActions != nil }, set: { if !$0, visitForActions != nil { visitForActions = nil } })
     }
 
     private var deletionBinding: Binding<Bool> {
-        Binding(get: { viewModel.visitPendingDeletion != nil }, set: { if !$0 { viewModel.visitPendingDeletion = nil } })
+        Binding(get: { viewModel.visitPendingDeletion != nil }, set: { if !$0, viewModel.visitPendingDeletion != nil { viewModel.visitPendingDeletion = nil } })
     }
 
     private var errorBinding: Binding<Bool> {
-        Binding(get: { viewModel.errorMessage != nil }, set: { if !$0 { viewModel.errorMessage = nil } })
+        Binding(get: { viewModel.errorMessage != nil }, set: { if !$0, viewModel.errorMessage != nil { viewModel.errorMessage = nil } })
     }
 }
 

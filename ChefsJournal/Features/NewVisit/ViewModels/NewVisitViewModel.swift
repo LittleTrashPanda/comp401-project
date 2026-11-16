@@ -29,6 +29,7 @@ final class NewVisitViewModel: ObservableObject {
     @Published var dishEditor: DishEditorContext?
     @Published var isConfirmingDiscard = false
     @Published var errorMessage: String?
+    @Published private(set) var diners: [DinerOption] = []
 
     private let store: any JournalStoreProtocol
     private let mode: Mode
@@ -87,6 +88,24 @@ final class NewVisitViewModel: ObservableObject {
     var dishSuggestions: [String] {
         guard let selectedRestaurant else { return [] }
         return store.dishNameSuggestions(for: selectedRestaurant)
+    }
+
+    /// Heads-up lines for an existing restaurant with flagged dishes. Empty for new restaurants.
+    var headsUpLines: [String] {
+        guard let selectedRestaurant else { return [] }
+        let dishes = (selectedRestaurant.visits ?? []).flatMap { visit in
+            visit.orderedDishes.map { DishSnapshot($0, visit: visit) }
+        }
+        return HeadsUpCalculator.items(for: dishes).map { $0.line() }
+    }
+
+    func loadDiners() {
+        do {
+            diners = try store.diners().map(DinerOption.init)
+        } catch {
+            Logger.persistence.error("Loading diners failed: \(error.localizedDescription, privacy: .public)")
+            errorMessage = error.localizedDescription
+        }
     }
 
     // MARK: Step 1

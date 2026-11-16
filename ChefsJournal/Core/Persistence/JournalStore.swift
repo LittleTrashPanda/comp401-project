@@ -3,7 +3,16 @@ import os
 import SwiftData
 
 @MainActor
-protocol JournalStoreProtocol: AnyObject {
+protocol DinerStoreProtocol: AnyObject {
+    func seedOwnerIfNeeded() throws
+    func diners() throws -> [Diner]
+    @discardableResult func addDiner(name: String, dietaryProfile: String) throws -> Diner
+    func updateDiner(_ diner: Diner, name: String, dietaryProfile: String) throws
+    func deleteDiner(_ diner: Diner) throws
+}
+
+@MainActor
+protocol JournalStoreProtocol: DinerStoreProtocol {
     func restaurants(matching query: String) throws -> [Restaurant]
     func existingRestaurant(named name: String) throws -> Restaurant?
     @discardableResult func saveNewVisit(_ draft: VisitDraft) throws -> Visit
@@ -13,6 +22,7 @@ protocol JournalStoreProtocol: AnyObject {
     func deleteDish(_ dish: DishEntry) throws
     func dishNameSuggestions(for restaurant: Restaurant) -> [String]
 }
+
 
 /// Writes the journal through SwiftData. All validation happens before anything is inserted.
 @MainActor
@@ -48,7 +58,7 @@ final class JournalStore: JournalStoreProtocol {
         modelContext.insert(visit)
         visit.restaurant = restaurant
         for (position, dishDraft) in draft.dishes.enumerated() {
-            insertDish(from: dishDraft, position: position, into: visit)
+            try insertDish(from: dishDraft, position: position, into: visit)
         }
         try save()
         return visit
@@ -63,7 +73,7 @@ final class JournalStore: JournalStoreProtocol {
         if let restaurant = visit.restaurant, !draft.restaurantArea.trimmed.isEmpty {
             restaurant.area = draft.restaurantArea.trimmed
         }
-        syncDishes(of: visit, with: draft.dishes)
+        try syncDishes(of: visit, with: draft.dishes)
         try save()
     }
 
@@ -81,7 +91,7 @@ final class JournalStore: JournalStoreProtocol {
 
     func updateDish(_ dish: DishEntry, with draft: DishDraft) throws {
         guard draft.isComplete else { throw JournalStoreError.invalidDraft }
-        apply(draft, to: dish)
+        try apply(draft, to: dish)
         try save()
     }
 
@@ -100,6 +110,42 @@ final class JournalStore: JournalStoreProtocol {
         }
     }
 
+    // MARK: Diners
+
+    func seedOwnerIfNeeded() throws {
+        let ownerExists = try modelContext.fetchCount(FetchDescriptor<Diner>(predicate: #Predicate { $0.isOwner })) > 0
+        guard !ownerExists else { return }
+        modelContext.insert(Diner(name: String(localized: "Me"), isOwner: true, createdAt: .distantPast))
+        try save()
+    }
+
+    func diners() throws -> [Diner] {
+        try modelContext.fetch(FetchDescriptor<Diner>(sortBy: [SortDescriptor(\.createdAt)]))
+            .sorted { $0.isOwner && !$1.isOwner }
+    }
+
+    @discardableResult
+    func addDiner(name: String, dietaryProfile: String) throws -> Diner {
+        guard !name.trimmed.isEmpty else { throw JournalStoreError.invalidDraft }
+        let diner = Diner(name: name.trimmed, dietaryProfile: dietaryProfile.trimmed)
+        modelContext.insert(diner)
+        try save()
+        return diner
+    }
+
+    func updateDiner(_ diner: Diner, name: String, dietaryProfile: String) throws {
+        guard !name.trimmed.isEmpty else { throw JournalStoreError.invalidDraft }
+        diner.name = name.trimmed
+        diner.dietaryProfile = dietaryProfile.trimmed
+        try save()
+    }
+
+    func deleteDiner(_ diner: Diner) throws {
+        guard !diner.isOwner else { throw JournalStoreError.cannotDeleteOwner }
+        modelContext.delete(diner)
+        try save()
+    }
+
     // MARK: Helpers
 
     private func findOrCreateRestaurant(for draft: VisitDraft) throws -> Restaurant {
@@ -112,25 +158,46 @@ final class JournalStore: JournalStoreProtocol {
     }
 
     @discardableResult
-    private func insertDish(from draft: DishDraft, position: Int, into visit: Visit) -> DishEntry {
+    private func insertDish(from draft: DishDraft, position: Int, into visit: Visit) throws -> DishEntry {
         let dish = DishEntry(name: draft.name.trimmed, tasteScore: draft.tasteScore, valueScore: draft.valueScore,
                              wouldOrderAgain: draft.wouldOrderAgain, note: draft.note.trimmed, position: position)
         modelContext.insert(dish)
         dish.photoData = draft.photoData
         dish.visit = visit
+        try applyDiners(from: draft, to: dish)
         return dish
     }
 
-    private func apply(_ draft: DishDraft, to dish: DishEntry) {
+    private func apply(_ draft: DishDraft, to dish: DishEntry) throws {
         dish.name = draft.name.trimmed
         dish.tasteScore = draft.tasteScore
         dish.valueScore = draft.valueScore
         dish.wouldOrderAgain = draft.wouldOrderAgain
         dish.note = draft.note.trimmed
         dish.photoData = draft.photoData
+        try applyDiners(from: draft, to: dish)
     }
 
-    private func syncDishes(of visit: Visit, with drafts: [DishDraft]) {
+    /// Sets "Ordered by" and replaces the dietary flags with the draft's.
+    private func applyDiners(from draft: DishDraft, to dish: DishEntry) throws {
+        let dinersByID = Dictionary(try fetchDiners(), uniquingKeysWith: { first, _ in first })
+        dish.orderedBy = draft.orderedByDinerID.flatMap { dinersByID[$0] }
+        for flag in dish.flags ?? [] {
+            modelContext.delete(flag)
+        }
+        dish.flags = draft.flags.map { flagDraft in
+            let flag = DietaryFlag(tag: flagDraft.tag)
+            modelContext.insert(flag)
+            flag.problemFor = flagDraft.problemForDinerIDs.compactMap { dinersByID[$0] }
+            return flag
+        }
+    }
+
+    private func fetchDiners() throws -> [(UUID, Diner)] {
+        try modelContext.fetch(FetchDescriptor<Diner>()).map { ($0.id, $0) }
+    }
+
+    private func syncDishes(of visit: Visit, with drafts: [DishDraft]) throws {
         let existing = Dictionary(uniqueKeysWithValues: (visit.dishes ?? []).map { ($0.id, $0) })
         let keptIDs = Set(drafts.map(\.id))
         for dish in existing.values where !keptIDs.contains(dish.id) {
@@ -138,10 +205,10 @@ final class JournalStore: JournalStoreProtocol {
         }
         for (position, draft) in drafts.enumerated() {
             if let dish = existing[draft.id] {
-                apply(draft, to: dish)
+                try apply(draft, to: dish)
                 dish.position = position
             } else {
-                insertDish(from: draft, position: position, into: visit)
+                try insertDish(from: draft, position: position, into: visit)
             }
         }
     }

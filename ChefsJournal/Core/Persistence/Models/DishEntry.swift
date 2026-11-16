@@ -13,6 +13,10 @@ final class DishEntry {
     var position: Int = 0
     @Attribute(.externalStorage) var photoData: Data?
     var visit: Visit?
+    var orderedBy: Diner?
+
+    @Relationship(deleteRule: .cascade, inverse: \DietaryFlag.dish)
+    var flags: [DietaryFlag]? = []
 
     init(name: String, tasteScore: Int, valueScore: Int, wouldOrderAgain: Bool, note: String, position: Int) {
         self.name = name

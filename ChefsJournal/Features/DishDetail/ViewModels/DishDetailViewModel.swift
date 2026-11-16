@@ -8,6 +8,7 @@ final class DishDetailViewModel: ObservableObject {
     @Published var dishPendingDeletion: DishEntry?
     @Published var errorMessage: String?
     @Published private(set) var shouldDismiss = false
+    @Published private(set) var diners: [DinerOption] = []
 
     private let store: any JournalStoreProtocol
     private var entryBeingEdited: DishEntry?
@@ -46,6 +47,15 @@ final class DishDetailViewModel: ObservableObject {
     }
 
     // MARK: Actions
+
+    func loadDiners() {
+        do {
+            diners = try store.diners().map(DinerOption.init)
+        } catch {
+            Logger.persistence.error("Loading diners failed: \(error.localizedDescription, privacy: .public)")
+            errorMessage = error.localizedDescription
+        }
+    }
 
     func entry(withID id: UUID, in visits: [Visit]) -> DishEntry? {
         visits.lazy.flatMap { $0.dishes ?? [] }.first { $0.id == id }

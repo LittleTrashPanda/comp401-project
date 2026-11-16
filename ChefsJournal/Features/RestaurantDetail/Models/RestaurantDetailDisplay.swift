@@ -7,6 +7,8 @@ struct RestaurantDetailDisplay {
     let averageExperienceText: String
     let lastVisitedText: String
     let latestExperience: Int?
+    let headsUpLines: [String]
+    let filterChips: [DishFilterChip]
     let dishes: [RestaurantDishRow]
     /// Newest first.
     let visits: [RestaurantVisitRow]
@@ -35,4 +37,11 @@ struct VisitEditContext: Identifiable {
     let id = UUID()
     let visit: Visit
     let draft: VisitDraft
+}
+
+struct DishFilterChip: Identifiable, Hashable {
+    let filter: RestaurantDishFilter
+    let title: String
+
+    var id: RestaurantDishFilter { filter }
 }

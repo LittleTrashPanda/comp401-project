@@ -39,8 +39,10 @@ struct NewVisitSheet: View {
                 Text(viewModel.errorMessage ?? "")
             }
             .sheet(item: $viewModel.dishEditor) { context in
-                DishEditorSheet(context: context, suggestions: viewModel.dishSuggestions, onDone: viewModel.commitDish)
+                DishEditorSheet(context: context, suggestions: viewModel.dishSuggestions, diners: viewModel.diners,
+                                onDone: viewModel.commitDish)
             }
+            .task { viewModel.loadDiners() }
         }
         .interactiveDismissDisabled(viewModel.hasUnsavedContent)
         .presentationDragIndicator(.visible)
@@ -80,7 +82,7 @@ struct NewVisitSheet: View {
     }
 
     private var errorBinding: Binding<Bool> {
-        Binding(get: { viewModel.errorMessage != nil }, set: { if !$0 { viewModel.errorMessage = nil } })
+        Binding(get: { viewModel.errorMessage != nil }, set: { if !$0, viewModel.errorMessage != nil { viewModel.errorMessage = nil } })
     }
 
     private func primaryAction() {

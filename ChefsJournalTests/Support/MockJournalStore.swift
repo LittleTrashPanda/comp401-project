@@ -52,4 +52,31 @@ final class MockJournalStore: JournalStoreProtocol {
     func dishNameSuggestions(for restaurant: Restaurant) -> [String] {
         suggestionsToReturn
     }
+
+    // MARK: Diners
+
+    var dinersToReturn: [Diner] = []
+
+    func seedOwnerIfNeeded() throws {
+        guard !dinersToReturn.contains(where: \.isOwner) else { return }
+        dinersToReturn.insert(Diner(name: "Me", isOwner: true), at: 0)
+    }
+
+    func diners() throws -> [Diner] { dinersToReturn }
+
+    func addDiner(name: String, dietaryProfile: String) throws -> Diner {
+        let diner = Diner(name: name, dietaryProfile: dietaryProfile)
+        dinersToReturn.append(diner)
+        return diner
+    }
+
+    func updateDiner(_ diner: Diner, name: String, dietaryProfile: String) throws {
+        diner.name = name
+        diner.dietaryProfile = dietaryProfile
+    }
+
+    func deleteDiner(_ diner: Diner) throws {
+        if diner.isOwner { throw JournalStoreError.cannotDeleteOwner }
+        dinersToReturn.removeAll { $0.id == diner.id }
+    }
 }

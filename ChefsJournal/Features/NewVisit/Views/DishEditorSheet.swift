@@ -7,10 +7,10 @@ struct DishEditorSheet: View {
     @StateObject private var viewModel: DishEditorViewModel
     @Environment(\.dismiss) private var dismiss
 
-    init(context: DishEditorContext, suggestions: [String], onDone: @escaping (DishDraft) -> Void) {
+    init(context: DishEditorContext, suggestions: [String], diners: [DinerOption], onDone: @escaping (DishDraft) -> Void) {
         self.onDone = onDone
         _viewModel = StateObject(wrappedValue: DishEditorViewModel(draft: context.draft, isEditing: context.index != nil,
-                                                                   suggestions: suggestions))
+                                                                   suggestions: suggestions, diners: diners))
     }
 
     var body: some View {
@@ -18,6 +18,18 @@ struct DishEditorSheet: View {
             Form {
                 nameSection
                 scoresSection
+                if !viewModel.diners.isEmpty {
+                    Section {
+                        Picker("Ordered by", selection: $viewModel.draft.orderedByDinerID) {
+                            Text("Not set").tag(UUID?.none)
+                            ForEach(viewModel.diners) { diner in
+                                Text(diner.name).tag(Optional(diner.id))
+                            }
+                        }
+                        .pickerStyle(.menu)
+                    }
+                }
+                DietaryTagsSection(viewModel: viewModel)
                 Section {
                     DishPhotoControl(viewModel: viewModel)
                 } header: {
@@ -74,7 +86,7 @@ struct DishEditorSheet: View {
     }
 
     private var photoErrorBinding: Binding<Bool> {
-        Binding(get: { viewModel.photoErrorMessage != nil }, set: { if !$0 { viewModel.photoErrorMessage = nil } })
+        Binding(get: { viewModel.photoErrorMessage != nil }, set: { if !$0, viewModel.photoErrorMessage != nil { viewModel.photoErrorMessage = nil } })
     }
 
     @ToolbarContentBuilder
@@ -95,11 +107,14 @@ struct DishEditorSheet: View {
 
 #Preview("Add dish with suggestions") {
     DishEditorSheet(context: DishEditorContext(index: nil, draft: DishDraft()),
-                    suggestions: ["California Roll", "Miso Soup"], onDone: { _ in })
+                    suggestions: ["California Roll", "Miso Soup"],
+                    diners: [DinerOption(id: UUID(), name: "Me", dietaryProfile: "", isOwner: true),
+                             DinerOption(id: UUID(), name: "Eliza", dietaryProfile: "Gluten intolerant", isOwner: false)],
+                    onDone: { _ in })
 }
 
 #Preview("Edit dish, accessibility size") {
     DishEditorSheet(context: DishEditorContext(index: 0, draft: DishDraft(name: "California Roll", tasteScore: 7, valueScore: 9)),
-                    suggestions: [], onDone: { _ in })
+                    suggestions: [], diners: [], onDone: { _ in })
         .environment(\.dynamicTypeSize, .accessibility3)
 }

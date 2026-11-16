@@ -14,8 +14,20 @@ struct DishSnapshot: Sendable, Hashable, Identifiable {
     var visitType = VisitType.dineIn
     var restaurantID = UUID()
     var restaurantName = ""
+    var orderedBy: DinerReference?
+    var flags: [FlagSnapshot] = []
 
     var matchingKey: String { name.matchingKey }
+}
+
+struct DinerReference: Sendable, Hashable, Identifiable {
+    let id: UUID
+    let name: String
+}
+
+struct FlagSnapshot: Sendable, Hashable {
+    var tag: String
+    var problemFor: [DinerReference]
 }
 
 /// A value copy of a visit and its dishes.
@@ -55,7 +67,11 @@ extension DishSnapshot {
             visitID: visit.id,
             visitType: visit.visitType,
             restaurantID: visit.restaurant?.id ?? UUID(),
-            restaurantName: visit.restaurant?.name ?? ""
+            restaurantName: visit.restaurant?.name ?? "",
+            orderedBy: dish.orderedBy.map { DinerReference(id: $0.id, name: $0.name) },
+            flags: (dish.flags ?? []).map { flag in
+                FlagSnapshot(tag: flag.tag, problemFor: (flag.problemFor ?? []).map { DinerReference(id: $0.id, name: $0.name) })
+            }
         )
     }
 }
