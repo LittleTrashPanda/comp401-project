@@ -26,12 +26,19 @@ struct JournalHeroView: View {
     }
 }
 
-/// Lock + "Private on this iPhone".
+/// Lock + "Private on this iPhone", or the synced variant when iCloud sync is on.
 struct PrivacyLineView: View {
+    @AppStorage(PreferenceKey.iCloudSyncEnabled) private var isSyncEnabled = false
+
     var body: some View {
-        Label("Private on this iPhone", systemImage: "lock")
+        Label(isSyncActive ? "Private, synced with iCloud" : "Private on this iPhone",
+              systemImage: isSyncActive ? "icloud" : "lock")
             .font(.footnote)
             .foregroundStyle(.journalMuted)
+    }
+
+    private var isSyncActive: Bool {
+        CloudSyncConfiguration.isAvailable && isSyncEnabled
     }
 }
 

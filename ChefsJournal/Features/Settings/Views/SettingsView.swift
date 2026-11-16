@@ -3,6 +3,9 @@ import SwiftUI
 struct SettingsView: View {
     let store: any JournalStoreProtocol
 
+    @AppStorage(PreferenceKey.iCloudSyncEnabled) private var isSyncEnabled = false
+    @AppStorage(PreferenceKey.insightsOptIn) private var isInsightsOptedIn = false
+
     var body: some View {
         NavigationStack {
             List {
@@ -14,6 +17,13 @@ struct SettingsView: View {
                         Label("Diners", systemImage: "person.2")
                     }
                 }
+                Section("Your data") {
+                    SettingsRow(route: .backup, title: "Backup & Sync", systemImage: "icloud",
+                                detail: CloudSyncConfiguration.isAvailable && isSyncEnabled ? "On" : "Off")
+                    SettingsRow(route: .export, title: "Export", systemImage: "square.and.arrow.down", detail: "CSV or PDF")
+                    SettingsRow(route: .privacy, title: "Privacy & Insights", systemImage: "lock",
+                                detail: isInsightsOptedIn ? "Contribution on" : "Contribution off")
+                }
             }
             .scrollContentBackground(.hidden)
             .background(.journalPaper)
@@ -21,7 +31,27 @@ struct SettingsView: View {
             .navigationDestination(for: SettingsRoute.self) { route in
                 switch route {
                 case .diners: DinersView(store: store)
+                case .backup: BackupView()
+                case .export: ExportView()
+                case .privacy: PrivacyInsightsView()
                 }
+            }
+        }
+    }
+}
+
+private struct SettingsRow: View {
+    let route: SettingsRoute
+    let title: LocalizedStringKey
+    let systemImage: String
+    let detail: LocalizedStringKey
+
+    var body: some View {
+        NavigationLink(value: route) {
+            LabeledContent {
+                Text(detail)
+            } label: {
+                Label(title, systemImage: systemImage)
             }
         }
     }
@@ -40,6 +70,7 @@ struct PrivacyCardView: View {
                     .font(.headline)
                     .foregroundStyle(.journalInk)
                 Text("Chef's Journal keeps your blunt notes to yourself. No account, no profile, no public scores.")
+                    .fixedSize(horizontal: false, vertical: true)
                     .font(.footnote)
                     .foregroundStyle(.journalMuted)
             }

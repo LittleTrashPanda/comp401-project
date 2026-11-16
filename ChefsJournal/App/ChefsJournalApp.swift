@@ -6,9 +6,10 @@ import SwiftUI
 struct ChefsJournalApp: App {
     @State private var modelContainer: ModelContainer
     @State private var journalStore: JournalStore
+    @AppStorage(PreferenceKey.iCloudSyncEnabled) private var isSyncEnabled = false
 
     init() {
-        let container = AppLaunch.makeModelContainer()
+        let container = AppLaunch.makeModelContainer(cloudKit: CloudSyncConfiguration.isActive())
         _modelContainer = State(initialValue: container)
         _journalStore = State(initialValue: JournalStore(modelContext: container.mainContext))
     }
@@ -16,8 +17,18 @@ struct ChefsJournalApp: App {
     var body: some Scene {
         WindowGroup {
             RootTabView(store: journalStore)
+                .id(ObjectIdentifier(modelContainer))
+                .onChange(of: isSyncEnabled) { rebuildContainer() }
         }
         .modelContainer(modelContainer)
+    }
+
+    /// Reopens the store with or without CloudKit when the sync preference changes.
+    private func rebuildContainer() {
+        guard CloudSyncConfiguration.isAvailable else { return }
+        let container = AppLaunch.makeModelContainer(cloudKit: CloudSyncConfiguration.isActive())
+        modelContainer = container
+        journalStore = JournalStore(modelContext: container.mainContext)
     }
 }
 
@@ -29,11 +40,11 @@ enum AppLaunch {
     static let seedLargeJournalArgument = "-seedLargeJournal"
     private static let largeJournalVisitCount = 500
 
-    static func makeModelContainer() -> ModelContainer {
+    static func makeModelContainer(cloudKit: Bool) -> ModelContainer {
         let arguments = ProcessInfo.processInfo.arguments
         let inMemory = arguments.contains(uiTestingArgument)
         do {
-            let container = try ModelContainerFactory.make(inMemory: inMemory)
+            let container = try ModelContainerFactory.make(inMemory: inMemory, cloudKit: cloudKit && !inMemory)
             seedIfRequested(container, arguments: arguments)
             return container
         } catch {
