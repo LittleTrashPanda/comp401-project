@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct RootTabView: View {
+    let store: any JournalStoreProtocol
+
     var body: some View {
         TabView {
             Tab("Journal", systemImage: "book.closed") {
-                PlaceholderTab(title: "My journal")
+                JournalView(store: store)
             }
             Tab("History", systemImage: "clock") {
                 PlaceholderTab(title: "History")
@@ -30,10 +32,14 @@ private struct PlaceholderTab: View {
 }
 
 #Preview("Light") {
-    RootTabView()
+    let container = PreviewData.makeContainer()
+    RootTabView(store: JournalStore(modelContext: container.mainContext))
+        .modelContainer(container)
 }
 
 #Preview("Dark") {
-    RootTabView()
+    let container = PreviewData.makeContainer()
+    RootTabView(store: JournalStore(modelContext: container.mainContext))
+        .modelContainer(container)
         .preferredColorScheme(.dark)
 }
