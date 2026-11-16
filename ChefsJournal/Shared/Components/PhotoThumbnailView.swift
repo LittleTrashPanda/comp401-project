@@ -1,11 +1,13 @@
+import os
 import SwiftUI
-import UIKit
 
 /// A dish photo cropped to a circle or arch, or an initials placeholder when there's no photo.
 struct PhotoThumbnailView: View {
     enum Shape {
         case circle
         case arched
+        /// Fills the proposed width; `side` only sets the decode size.
+        case hero
     }
 
     let photoData: Data?
@@ -14,22 +16,22 @@ struct PhotoThumbnailView: View {
     var side: CGFloat = Sizing.visitRowPhoto
 
     @Environment(\.displayScale) private var displayScale
-    @State private var thumbnail: UIImage?
+    @State private var thumbnail: CGImage?
 
     var body: some View {
         content
-            .frame(width: side, height: side)
+            .frame(width: shape == .hero ? nil : side, height: shape == .hero ? nil : side)
             .clipShape(clipShape)
             .accessibilityHidden(true)
             .task(id: photoData) {
-                thumbnail = await Self.makeThumbnail(from: photoData, side: side * displayScale)
+                thumbnail = await makeThumbnail()
             }
     }
 
     @ViewBuilder
     private var content: some View {
         if let thumbnail {
-            Image(uiImage: thumbnail)
+            Image(decorative: thumbnail, scale: displayScale)
                 .resizable()
                 .scaledToFill()
         } else {
@@ -51,15 +53,20 @@ struct PhotoThumbnailView: View {
         case .arched:
             UnevenRoundedRectangle(cornerRadii: .init(topLeading: Radius.arch, bottomLeading: Radius.small,
                                                       bottomTrailing: Radius.small, topTrailing: Radius.arch))
+        case .hero:
+            UnevenRoundedRectangle(cornerRadii: .init(topLeading: Radius.large, bottomLeading: Radius.medium,
+                                                      bottomTrailing: Radius.medium, topTrailing: Radius.large))
         }
     }
 
-    private static func makeThumbnail(from photoData: Data?, side: CGFloat) async -> UIImage? {
+    private func makeThumbnail() async -> CGImage? {
         guard let photoData else { return nil }
-        let pixelSide = side
-        return await Task.detached(priority: .utility) {
-            UIImage(data: photoData)?.preparingThumbnail(of: CGSize(width: pixelSide, height: pixelSide))
-        }.value
+        do {
+            return try await PhotoProcessor().thumbnail(from: photoData, pointSize: side, scale: displayScale)
+        } catch {
+            Logger.photos.error("Thumbnail failed: \(error.localizedDescription, privacy: .public)")
+            return nil
+        }
     }
 }
 

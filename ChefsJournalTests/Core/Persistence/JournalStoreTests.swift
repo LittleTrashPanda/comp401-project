@@ -146,3 +146,44 @@ struct JournalStoreUpdateTests {
         #expect(dish.note == "Smaller this time")
     }
 }
+
+@MainActor
+struct JournalStorePhotoTests {
+    @Test func photoDataPersistsAndIsRemovedWithDish() throws {
+        let journal = try TestJournal()
+        let photo = try PhotoProcessorTests.makeImageData(width: 40, height: 30)
+        var dish = Fixtures.dish()
+        dish.photoData = photo
+        let visit = try journal.store.saveNewVisit(Fixtures.visit(dishes: [dish]))
+
+        let saved = try #require(try journal.context.fetch(FetchDescriptor<DishEntry>()).first)
+        #expect(saved.photoData == photo)
+
+        try journal.store.deleteDish(try #require(visit.dishes?.first))
+        #expect(try journal.count(DishEntry.self) == 0)
+    }
+}
+
+@MainActor
+struct DishEditorViewModelPhotoTests {
+    @Test func attachingPhotoDownsamplesIntoDraft() async throws {
+        let viewModel = DishEditorViewModel(draft: DishDraft(), isEditing: false, suggestions: [])
+        await viewModel.attachPhoto(from: try PhotoProcessorTests.makeImageData(width: 3200, height: 2400))
+        let data = try #require(viewModel.draft.photoData)
+        #expect(!data.isEmpty)
+        #expect(viewModel.photoErrorMessage == nil)
+    }
+
+    @Test func unreadablePhotoShowsMessage() async {
+        let viewModel = DishEditorViewModel(draft: DishDraft(), isEditing: false, suggestions: [])
+        await viewModel.attachPhoto(from: Data("junk".utf8))
+        #expect(viewModel.draft.photoData == nil)
+        #expect(viewModel.photoErrorMessage != nil)
+    }
+
+    @Test func removePhotoClearsDraft() {
+        let viewModel = DishEditorViewModel(draft: DishDraft(photoData: Data([1])), isEditing: true, suggestions: [])
+        viewModel.removePhoto()
+        #expect(viewModel.draft.photoData == nil)
+    }
+}

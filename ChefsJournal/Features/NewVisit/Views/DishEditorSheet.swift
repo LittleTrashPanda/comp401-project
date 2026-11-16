@@ -19,6 +19,11 @@ struct DishEditorSheet: View {
                 nameSection
                 scoresSection
                 Section {
+                    DishPhotoControl(viewModel: viewModel)
+                } header: {
+                    Text("Photo")
+                }
+                Section {
                     Toggle("Would order again", isOn: $viewModel.draft.wouldOrderAgain)
                         .tint(.journalSuccess)
                     TextField("Note (optional)", text: $viewModel.draft.note, axis: .vertical)
@@ -29,6 +34,11 @@ struct DishEditorSheet: View {
             .navigationTitle(viewModel.isEditing ? "Edit Dish" : "Add Dish")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbarContent }
+            .alert("Photo", isPresented: photoErrorBinding) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(viewModel.photoErrorMessage ?? "")
+            }
         }
         .presentationDragIndicator(.visible)
     }
@@ -61,6 +71,10 @@ struct DishEditorSheet: View {
             Text("Taste and value stay separate.")
         }
         .listRowBackground(Color.journalCobaltSoft)
+    }
+
+    private var photoErrorBinding: Binding<Bool> {
+        Binding(get: { viewModel.photoErrorMessage != nil }, set: { if !$0 { viewModel.photoErrorMessage = nil } })
     }
 
     @ToolbarContentBuilder

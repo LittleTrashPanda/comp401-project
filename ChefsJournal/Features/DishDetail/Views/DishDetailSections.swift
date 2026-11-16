@@ -45,10 +45,13 @@ struct DishHeroPhoto: View {
     let photoData: Data?
 
     var body: some View {
-        PhotoThumbnailView(photoData: photoData, placeholderText: "", shape: .arched, side: Sizing.heroPhotoSide)
-            .frame(maxWidth: .infinity)
-            .containerRelativeFrame(.horizontal) { width, _ in width }
+        Color.clear
             .aspectRatio(Sizing.heroAspectRatio, contentMode: .fit)
+            .overlay {
+                PhotoThumbnailView(photoData: photoData, placeholderText: "", shape: .hero, side: Sizing.heroPhotoSide)
+            }
+            .clipped()
+            .containerRelativeFrame(.horizontal) { width, _ in width - Spacing.gutter * 2 }
     }
 }
 

@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import os
 
 /// State for the Add/Edit Dish sheet.
 @MainActor
@@ -7,13 +8,18 @@ final class DishEditorViewModel: ObservableObject {
     private static let suggestionLimit = 6
 
     @Published var draft: DishDraft
+    @Published private(set) var isProcessingPhoto = false
+    @Published var photoErrorMessage: String?
+    @Published var isShowingCamera = false
     let isEditing: Bool
     private let allSuggestions: [String]
+    private let photoProcessor: PhotoProcessor
 
-    init(draft: DishDraft, isEditing: Bool, suggestions: [String]) {
+    init(draft: DishDraft, isEditing: Bool, suggestions: [String], photoProcessor: PhotoProcessor = PhotoProcessor()) {
         self.draft = draft
         self.isEditing = isEditing
         self.allSuggestions = suggestions
+        self.photoProcessor = photoProcessor
     }
 
     var canFinish: Bool { draft.isComplete }
@@ -31,4 +37,31 @@ final class DishEditorViewModel: ObservableObject {
     func applySuggestion(_ name: String) {
         draft.name = name
     }
+
+    // MARK: Photo
+
+    func attachPhoto(from data: Data) async {
+        isProcessingPhoto = true
+        defer { isProcessingPhoto = false }
+        do {
+            draft.photoData = try await photoProcessor.downsampledJPEG(from: data)
+        } catch {
+            Logger.photos.error("Attaching a photo failed: \(error.localizedDescription, privacy: .public)")
+            photoErrorMessage = error.localizedDescription
+        }
+    }
+
+    func removePhoto() {
+        draft.photoData = nil
+    }
+
+    func takePhoto() async {
+        guard await CameraPicker.requestAccess() else {
+            photoErrorMessage = PhotoError.cameraAccessDenied.localizedDescription
+            return
+        }
+        isShowingCamera = true
+    }
+
+    var isCameraAvailable: Bool { CameraPicker.isCameraAvailable }
 }
