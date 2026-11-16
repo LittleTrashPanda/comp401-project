@@ -7,9 +7,7 @@ extension Date {
 
     /// A short, human description of how long ago this date was, e.g. "3 weeks ago".
     func lastVisitedDescription(relativeTo now: Date, calendar: Calendar = .current) -> LocalizedStringResource {
-        let startOfSelf = calendar.startOfDay(for: self)
-        let startOfNow = calendar.startOfDay(for: now)
-        let days = max(0, calendar.dateComponents([.day], from: startOfSelf, to: startOfNow).day ?? 0)
+        let days = calendar.daysBetween(self, and: now)
 
         switch days {
         case 0:

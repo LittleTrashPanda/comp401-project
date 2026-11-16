@@ -10,5 +10,11 @@ extension View {
             .navigationDestination(for: DishRoute.self) { route in
                 DishDetailView(store: store, route: route)
             }
+            .navigationDestination(for: HistoryRoute.self) { route in
+                switch route {
+                case let .restaurant(restaurant): RestaurantDetailView(store: store, restaurantID: restaurant.id)
+                case let .dish(dish): DishDetailView(store: store, route: dish)
+                }
+            }
     }
 }

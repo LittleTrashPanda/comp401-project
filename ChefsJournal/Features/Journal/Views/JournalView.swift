@@ -12,6 +12,12 @@ struct JournalView: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: Spacing.section) {
                     JournalHeroView(onNewLog: viewModel.startNewLog)
+                    ForEach(viewModel.beenAWhileCards(for: visits, now: .now)) { card in
+                        NavigationLink(value: RestaurantRoute(id: card.id)) {
+                            BeenAWhileCardView(card: card)
+                        }
+                        .buttonStyle(.plain)
+                    }
                     recentVisits
                 }
                 .padding(.horizontal, Spacing.gutter)

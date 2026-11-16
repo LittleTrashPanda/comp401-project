@@ -10,7 +10,7 @@ struct RootTabView: View {
                 JournalView(store: store)
             }
             Tab("History", systemImage: "clock") {
-                PlaceholderTab(title: "History")
+                HistoryView(store: store)
             }
             Tab("Settings", systemImage: "gearshape") {
                 SettingsView(store: store)
@@ -25,18 +25,6 @@ struct RootTabView: View {
             try store.seedOwnerIfNeeded()
         } catch {
             Logger.persistence.error("Creating the owner diner failed: \(error.localizedDescription, privacy: .public)")
-        }
-    }
-}
-
-private struct PlaceholderTab: View {
-    let title: LocalizedStringKey
-
-    var body: some View {
-        NavigationStack {
-            Color.journalPaper
-                .ignoresSafeArea()
-                .navigationTitle(title)
         }
     }
 }
