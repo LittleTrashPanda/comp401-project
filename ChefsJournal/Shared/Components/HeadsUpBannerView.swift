@@ -27,7 +27,7 @@ struct HeadsUpBannerView: View {
             Spacer(minLength: 0)
         }
         .padding(Spacing.m)
-        .background(lines.isEmpty ? Color.journalSuccess.opacity(Layout.softFillOpacity) : .journalTomatoSoft,
+        .background(lines.isEmpty ? Color.journalSuccess.opacity(Sizing.softFillOpacity) : .journalTomatoSoft,
                     in: .rect(cornerRadius: Radius.medium))
         .accessibilityElement(children: .combine)
     }

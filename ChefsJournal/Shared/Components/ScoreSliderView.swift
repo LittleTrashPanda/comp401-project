@@ -5,6 +5,7 @@ struct ScoreSliderView: View {
     let title: LocalizedStringKey
     @Binding var score: Int
     var tint: Color = .journalCobalt
+    var accessibilityIdentifier = ""
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.xs) {
@@ -21,6 +22,7 @@ struct ScoreSliderView: View {
             }
             .tint(tint)
             .accessibilityValue(accessibilityValue)
+            .accessibilityIdentifier(accessibilityIdentifier)
         }
     }
 

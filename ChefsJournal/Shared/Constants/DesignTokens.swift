@@ -67,7 +67,7 @@ enum Radius {
     static let arch: CGFloat = 34
 }
 
-enum Layout {
+enum Sizing {
     static let minimumTapTarget: CGFloat = 44
     static let hairline: CGFloat = 1
     static let stampStroke: CGFloat = 2

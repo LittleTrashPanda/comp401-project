@@ -16,7 +16,7 @@ struct SummaryStripView: View {
                 if index > 0 {
                     Rectangle()
                         .fill(.journalRule)
-                        .frame(width: Layout.hairline)
+                        .frame(width: Sizing.hairline)
                 }
                 VStack(spacing: Spacing.xxs) {
                     Text(column.value)
@@ -33,8 +33,8 @@ struct SummaryStripView: View {
             }
         }
         .fixedSize(horizontal: false, vertical: true)
-        .overlay(alignment: .top) { Rectangle().fill(.journalRule).frame(height: Layout.hairline) }
-        .overlay(alignment: .bottom) { Rectangle().fill(.journalRule).frame(height: Layout.hairline) }
+        .overlay(alignment: .top) { Rectangle().fill(.journalRule).frame(height: Sizing.hairline) }
+        .overlay(alignment: .bottom) { Rectangle().fill(.journalRule).frame(height: Sizing.hairline) }
     }
 }
 

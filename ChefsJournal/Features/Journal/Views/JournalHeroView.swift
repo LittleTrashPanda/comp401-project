@@ -19,7 +19,7 @@ struct JournalHeroView: View {
             Button("New Log", systemImage: "plus", action: onNewLog)
                 .buttonStyle(NewLogButtonStyle())
                 .padding(.top, Spacing.xs)
-                .padding(.trailing, Layout.newLogPressedOffset)
+                .padding(.trailing, Sizing.newLogPressedOffset)
                 .accessibilityIdentifier("newLogButton")
         }
         .padding(.top, Spacing.section)

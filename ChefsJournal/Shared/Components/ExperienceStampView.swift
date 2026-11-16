@@ -10,8 +10,8 @@ struct ExperienceStampView: View {
     let score: Int
     var size: Size = .regular
 
-    @ScaledMetric(relativeTo: .title) private var regularDiameter = Layout.experienceStampRegular
-    @ScaledMetric(relativeTo: .body) private var compactDiameter = Layout.experienceStampCompact
+    @ScaledMetric(relativeTo: .title) private var regularDiameter = Sizing.experienceStampRegular
+    @ScaledMetric(relativeTo: .body) private var compactDiameter = Sizing.experienceStampCompact
 
     var body: some View {
         VStack(spacing: 0) {
@@ -28,7 +28,7 @@ struct ExperienceStampView: View {
         .foregroundStyle(.journalTomato)
         .padding(Spacing.xxs)
         .frame(width: diameter, height: diameter)
-        .overlay(Circle().strokeBorder(.journalTomato, lineWidth: Layout.stampStroke))
+        .overlay(Circle().strokeBorder(.journalTomato, lineWidth: Sizing.stampStroke))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text("Experience \(score) out of 10"))
     }

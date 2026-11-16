@@ -15,8 +15,8 @@ struct ScorePairView: View {
         HStack(spacing: 0) {
             column(title: "Taste", score: taste)
             Rectangle()
-                .fill(.journalPaper.opacity(Layout.disabledOpacity))
-                .frame(width: Layout.hairline)
+                .fill(.journalPaper.opacity(Sizing.disabledOpacity))
+                .frame(width: Sizing.hairline)
             column(title: "Value", score: value)
         }
         .fixedSize(horizontal: false, vertical: true)

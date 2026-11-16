@@ -22,7 +22,7 @@ struct JournalView: View {
             .journalDestinations(store: store)
             .successToast(message: $viewModel.toastMessage)
             .sheet(isPresented: $viewModel.isPresentingNewVisit) {
-                NewVisitPlaceholderSheet()
+                NewVisitSheet(store: store, onSaved: viewModel.visitSaved)
             }
         }
     }
@@ -60,17 +60,10 @@ private struct JournalRecentVisitsSection: View {
                     JournalVisitRow(row: display.row, photoData: display.photoData)
                 }
                 .buttonStyle(.plain)
+                .accessibilityIdentifier("journalVisitRow")
                 Divider().overlay(.journalRule)
             }
         }
-    }
-}
-
-/// Stand-in until the New Visit flow exists.
-private struct NewVisitPlaceholderSheet: View {
-    var body: some View {
-        Text("New Log")
-            .presentationDragIndicator(.visible)
     }
 }
 

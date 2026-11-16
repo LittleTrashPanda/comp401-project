@@ -8,10 +8,10 @@ struct PrimaryButtonStyle: ButtonStyle {
         configuration.label
             .font(.body.weight(.semibold))
             .foregroundStyle(.white)
-            .frame(maxWidth: .infinity, minHeight: Layout.minimumTapTarget)
+            .frame(maxWidth: .infinity, minHeight: Sizing.minimumTapTarget)
             .padding(.vertical, Spacing.xs)
             .background(.journalCobalt, in: .rect(cornerRadius: Radius.large))
-            .opacity(isEnabled ? (configuration.isPressed ? Layout.pressedOpacity : 1) : Layout.disabledOpacity)
+            .opacity(isEnabled ? (configuration.isPressed ? Sizing.pressedOpacity : 1) : Sizing.disabledOpacity)
     }
 }
 
@@ -23,31 +23,31 @@ struct OutlineButtonStyle: ButtonStyle {
         configuration.label
             .font(.body.weight(.semibold))
             .foregroundStyle(tint)
-            .frame(maxWidth: .infinity, minHeight: Layout.minimumTapTarget)
+            .frame(maxWidth: .infinity, minHeight: Sizing.minimumTapTarget)
             .padding(.vertical, Spacing.xs)
-            .overlay(RoundedRectangle(cornerRadius: Radius.large).strokeBorder(tint, lineWidth: Layout.stampStroke))
+            .overlay(RoundedRectangle(cornerRadius: Radius.large).strokeBorder(tint, lineWidth: Sizing.stampStroke))
             .contentShape(.rect(cornerRadius: Radius.large))
-            .opacity(configuration.isPressed ? Layout.pressedOpacity : 1)
+            .opacity(configuration.isPressed ? Sizing.pressedOpacity : 1)
     }
 }
 
 /// The Journal's "New Log" button, with a solid cobalt offset shadow that collapses when pressed.
 struct NewLogButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        let offset = configuration.isPressed ? 0 : Layout.newLogPressedOffset
+        let offset = configuration.isPressed ? 0 : Sizing.newLogPressedOffset
         configuration.label
             .font(.body.weight(.semibold))
             .foregroundStyle(.journalInk)
-            .frame(maxWidth: .infinity, minHeight: Layout.minimumTapTarget)
+            .frame(maxWidth: .infinity, minHeight: Sizing.minimumTapTarget)
             .padding(.vertical, Spacing.xs)
             .background(.journalSurface, in: .rect(cornerRadius: Radius.large))
-            .overlay(RoundedRectangle(cornerRadius: Radius.large).strokeBorder(.journalInk, lineWidth: Layout.stampStroke))
+            .overlay(RoundedRectangle(cornerRadius: Radius.large).strokeBorder(.journalInk, lineWidth: Sizing.stampStroke))
             .background(
                 RoundedRectangle(cornerRadius: Radius.large)
                     .fill(.journalCobalt)
                     .offset(x: offset, y: offset)
             )
-            .offset(x: Layout.newLogPressedOffset - offset, y: Layout.newLogPressedOffset - offset)
+            .offset(x: Sizing.newLogPressedOffset - offset, y: Sizing.newLogPressedOffset - offset)
             .animation(.snappy, value: configuration.isPressed)
     }
 }

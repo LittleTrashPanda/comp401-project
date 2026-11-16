@@ -54,9 +54,9 @@ private extension View {
             .foregroundStyle(isSelected ? .journalCobalt : .journalInk)
             .padding(.horizontal, Spacing.s)
             .padding(.vertical, Spacing.xs)
-            .frame(minHeight: Layout.minimumTapTarget)
+            .frame(minHeight: Sizing.minimumTapTarget)
             .background(isSelected ? .journalCobaltSoft : .journalSurface, in: .capsule)
-            .overlay(Capsule().strokeBorder(isSelected ? .journalCobalt : .journalRule, lineWidth: Layout.hairline))
+            .overlay(Capsule().strokeBorder(isSelected ? .journalCobalt : .journalRule, lineWidth: Sizing.hairline))
             .contentShape(.capsule)
     }
 }

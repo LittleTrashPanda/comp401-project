@@ -11,7 +11,7 @@ struct PhotoThumbnailView: View {
     let photoData: Data?
     let placeholderText: String
     var shape: Shape = .circle
-    var side: CGFloat = Layout.visitRowPhoto
+    var side: CGFloat = Sizing.visitRowPhoto
 
     @Environment(\.displayScale) private var displayScale
     @State private var thumbnail: UIImage?
@@ -66,7 +66,7 @@ struct PhotoThumbnailView: View {
 #Preview("Placeholders") {
     HStack(spacing: Spacing.m) {
         PhotoThumbnailView(photoData: nil, placeholderText: "BI")
-        PhotoThumbnailView(photoData: nil, placeholderText: "S", shape: .arched, side: Layout.dishRowPhoto)
+        PhotoThumbnailView(photoData: nil, placeholderText: "S", shape: .arched, side: Sizing.dishRowPhoto)
     }
     .padding()
 }
